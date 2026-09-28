@@ -386,3 +386,6 @@ Verified headless (`node test/harness.mjs audio-party --tag=audio --size=640x360
 - kick attacks binned by `partyBeat()` phase peak in the first eighth of the beat (27.7 dB contrast, 24 ms output latency compensated)
 - pause drift 0; mute releases the source while the beat still advances, and unmute rejoins within 49 ms of the wall clock
 - stop and `stopAll` go to digital silence; loop wraps inside 0.98-31.70; with no loop the track ends on its own; 0 live party sources afterwards
+
+### Sigma Boy: shipped length (2026-09-28)
+Party mode is capped at 10 s, so `audio/sigma.mp3` now ships only the first 11.03 s of the edit (frame-copied with `-c:a copy`, no re-encode), 133 KB instead of 421 KB. `manifest.party.fullDuration` keeps the edit's original 35.04 s; `scripts/fetch-memes.mjs --party` applies the same cut (`PARTY.gameSeconds`). At runtime the track's bytes are fetched at boot, decoded right after Start (before the other villains and meme clips), and a party started before it's decoded waits for it (up to 6 s) and then plays from the top. Measured on the production build over an emulated ~2 Mbps link with the jukebox pressed immediately after load: the song started 2.8 s later from 0 s and played the full 10 s (`test/scripts/prod-party.mjs`).

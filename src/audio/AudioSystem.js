@@ -51,6 +51,7 @@ const BEACON_GAIN = 0.45;
 // party: sigma boy plays 2D on the enemy bus (same +4 dB hot level as the villain tracks); ambience ducks under it
 const PARTY_DUCK = 0.2;
 const PARTY_LEAD = 0.03; // seconds between asking for the track and its first sample
+const PARTY_WAIT_MAX = 6; // a party started before the track decoded waits this long for it, then the clock runs anyway
 const wallNow = () => performance.now() / 1000;
 
 export class AudioSystem {
@@ -91,7 +92,7 @@ export class AudioSystem {
     this.beacons = [];
     // party: `wall0` anchors the song position to a pause-aware wall clock, so the beat keeps going while the track is
     // still decoding or the game is muted; while the track plays, `startAt` (context time of file position 0) wins
-    this.party = { active: false, info: null, buf: null, loading: null, src: null, gn: null, live: 0, loop: false, gain: 1, startAt: 0, wall0: 0, offset: 0 };
+    this.party = { active: false, info: null, buf: null, loading: null, bytes: null, failed: false, waiting: false, reqAt: 0, src: null, gn: null, live: 0, loop: false, gain: 1, startAt: 0, wall0: 0, offset: 0 };
     this._pauseAcc = 0; this._pausedAt = 0;
     settings.on((k, v) => this._onSetting(k, v));
   }
@@ -245,7 +246,9 @@ export class AudioSystem {
     if (manifest.sfx && !this._memeCoreStarted) {
       this._memeCoreStarted = true;
       this.setMemes(manifest);
-      all.then(() => this.preloadMemes(MEME_CORE)).then(() => this.preloadParty()).then(() => this.preloadMemes(['party'])).catch(() => {});
+      // the jukebox sits a few metres from spawn: its track decodes first, alongside the first villain track
+      this.preloadParty();
+      Promise.all([all, this.preloadParty()]).then(() => this.preloadMemes(MEME_CORE)).then(() => this.preloadMemes(['party'])).catch(() => {});
     }
     return all;
   }
@@ -860,15 +863,29 @@ export class AudioSystem {
     if (manifest && manifest.party && manifest.party.audio) this.party.info = manifest.party;
   }
 
-  /** fetch + decode the sigma boy track (preload() queues this after the meme core set) */
+  /** start downloading the party track's bytes at boot (no AudioContext needed); decoded after Start */
+  prefetchParty(manifest) {
+    const p = this.party;
+    if (manifest) this.setParty(manifest);
+    if (p.bytes || !p.info) return;
+    p.bytes = fetch(new URL(`./assets/${p.info.audio}`, document.baseURI))
+      .then((r) => { if (!r.ok) throw new Error(`party: http ${r.status}`); return r.arrayBuffer(); });
+    p.bytes.catch(() => {});
+  }
+
+  /** fetch + decode the sigma boy track (preload() starts this right after Start) */
   preloadParty() {
     const p = this.party;
     if (p.buf) return Promise.resolve(p.buf);
     if (p.loading) return p.loading;
     if (!p.info || !this._ensure()) return Promise.resolve(null);
     const m = p.info;
-    p.loading = fetch(new URL(`./assets/${m.audio}`, document.baseURI))
-      .then((r) => { if (!r.ok) throw new Error(`party: http ${r.status}`); return r.arrayBuffer(); })
+    // reuse the boot-time download; a failed prefetch is retried once here
+    const bytes = p.bytes ? p.bytes.catch(() => null) : Promise.resolve(null);
+    p.bytes = null;
+    p.loading = bytes
+      .then((ab) => ab || fetch(new URL(`./assets/${m.audio}`, document.baseURI))
+        .then((r) => { if (!r.ok) throw new Error(`party: http ${r.status}`); return r.arrayBuffer(); }))
       .then((ab) => this.ctx.decodeAudioData(ab))
       .then((buf) => {
         // same decoder-delay check as the villain tracks: shift the beat grid by the difference to the offline decode
@@ -881,10 +898,10 @@ export class AudioSystem {
           if (i < lim) off = i / buf.sampleRate - m.onsetAt;
           if (Math.abs(off) > 0.1) off = 0;
         }
-        p.offset = off; p.buf = buf; p.loading = null;
+        p.offset = off; p.buf = buf; p.loading = null; p.failed = false;
         return buf;
       })
-      .catch((err) => { p.loading = null; console.warn(String(err)); return null; });
+      .catch((err) => { p.loading = null; p.failed = true; console.warn(String(err)); return null; });
     return p.loading;
   }
 
@@ -902,7 +919,11 @@ export class AudioSystem {
     p.active = true;
     p.loop = !!(opts && opts.loop);
     p.gain = (opts && opts.gain != null ? opts.gain : 1) * Math.pow(10, (p.info.playbackGainDb || 0) / 20);
-    p.wall0 = this._wall() + PARTY_LEAD;
+    // the song starts from the top once it's decoded; the party clock waits for it (up to PARTY_WAIT_MAX)
+    p.reqAt = this._wall();
+    p.waiting = !p.buf;
+    p.wall0 = p.reqAt + PARTY_LEAD;
+    if (p.waiting) this.preloadParty();
     this._applyDuck(0.25);
     this._partyPlay();
     if (opts && opts.sting) this.meme('party');
@@ -914,6 +935,7 @@ export class AudioSystem {
     const p = this.party;
     if (!p.active && !p.src) return;
     p.active = false;
+    p.waiting = false;
     this._partyRelease(fade);
     this._applyDuck(0.8);
   }
@@ -944,7 +966,11 @@ export class AudioSystem {
     const p = this.party, ctx = this.ctx;
     let pos;
     if (p.src && ctx) pos = ctx.currentTime - (ctx.outputLatency || ctx.baseLatency || 0) - p.startAt;
-    else pos = this._wall() - p.wall0;
+    else if (p.waiting && !p.failed) {
+      // still downloading/decoding: hold at the top of the song, then let the clock run so a party can't hang
+      const w = this._wall() - p.reqAt;
+      pos = w > PARTY_WAIT_MAX ? w - PARTY_WAIT_MAX : 0;
+    } else pos = this._wall() - p.wall0;
     const m = p.info;
     if (p.loop && pos > m.loopEnd) pos = m.loopStart + ((pos - m.loopStart) % (m.loopEnd - m.loopStart));
     return pos;
@@ -954,6 +980,12 @@ export class AudioSystem {
     const p = this.party, ctx = this.ctx;
     if (!p.active || p.src || !ctx || ctx.state !== 'running' || this.paused || this._mutedNow()) return;
     if (!p.buf) { if (!p.loading) this.preloadParty(); return; } // update() retries once decoded
+    if (p.waiting) {
+      // decoded after the party started: begin at the top (or where the capped wait says the song should be)
+      const w = this._wall() - p.reqAt;
+      p.wall0 = p.reqAt + Math.min(w, PARTY_WAIT_MAX) + PARTY_LEAD;
+      p.waiting = false;
+    }
     // join the song where the wall clock says it is (late decode, unmute), never replaying the pickup
     let pos = this._wall() - p.wall0 + PARTY_LEAD;
     const m = p.info, dur = p.buf.duration;

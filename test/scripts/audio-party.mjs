@@ -65,6 +65,9 @@ export default async function ({ evalJs }) {
     out.phasePeakBin = prof.indexOf(Math.max(...prof));
     out.phaseContrastDb = +(Math.max(...prof) - Math.min(...prof)).toFixed(1);
 
+    // the shipped clip is ~11 s (party mode is capped at 10 s): restart it so pause/mute run mid-song
+    A.partyStart(); for (let i = 0; i < 40 && !A.party.src; i++) await sleep(50); await sleep(300);
+
     // 4) pause freezes the beat, resume carries on
     A.pauseAll(); const pb = A.partyBeat(); await sleep(500); const pb2 = A.partyBeat();
     out.pause = { state: A.ctx.state, drift: +(pb2 - pb).toFixed(4) };

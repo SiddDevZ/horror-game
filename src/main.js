@@ -58,6 +58,7 @@ async function boot() {
   if (manifest) {
     renderer.loadEnemyTextures(manifest).catch((e) => console.error('enemy textures', e));
     game.setManifest?.(manifest);
+    audio.prefetchParty?.(manifest); // the jukebox is right by spawn: fetch its track before Start
   }
 
   let started = false;
@@ -67,6 +68,7 @@ async function boot() {
     audio.unlock();
     if (manifest) {
       audio.preload(manifest, ['kanye'])
+        .then(() => audio.preloadParty?.()) // the jukebox is by spawn: its track goes before the other villains
         .then(() => audio.preload(manifest, ['epstein', 'trump']))
         .catch((e) => console.error('audio preload', e));
     }

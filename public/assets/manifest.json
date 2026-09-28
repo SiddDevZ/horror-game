@@ -467,7 +467,7 @@
         "decodeAlignCorr": 0.9989,
         "decodedSamples": 1473600,
         "seam": {
-          "jump": 0.00003,
+          "jump": 3e-05,
           "p99Step": 0.03319,
           "ratio": 0.001
         },
@@ -2611,12 +2611,12 @@
       "foundAt": 17.7424,
       "waveCorr": 0.9974
     },
-    "duration": 35.04,
+    "duration": 11.028,
     "bpm": 125,
     "firstBeat": 0.02,
     "dropAt": 0.98,
     "loopStart": 0.98,
-    "loopEnd": 31.7,
+    "loopEnd": 10.978,
     "gainDb": -1.6,
     "limiterCeilingDb": -3.1,
     "playbackGainDb": 1,
@@ -2664,7 +2664,9 @@
     "rate": 48000,
     "channels": 2,
     "bitrate": "96k",
-    "bytes": 421056,
-    "processing": "stereo 48 kHz float edit (equal-power 12 ms splice, 4 ms fade in, 0.6 s fade out, -50 dB tail trim); highpass=f=28,bass=g=3:f=60:w=0.7,treble=g=1.5:f=9000,lowpass=f=16000:p=2; static gain toward -9 LUFS (max +1.5 dB extra drive), 4x oversampled lookahead limiter; libmp3lame 96k CBR joint stereo 48000 Hz"
+    "bytes": 132813,
+    "processing": "stereo 48 kHz float edit (equal-power 12 ms splice, 4 ms fade in, 0.6 s fade out, -50 dB tail trim); highpass=f=28,bass=g=3:f=60:w=0.7,treble=g=1.5:f=9000,lowpass=f=16000:p=2; static gain toward -9 LUFS (max +1.5 dB extra drive), 4x oversampled lookahead limiter; libmp3lame 96k CBR joint stereo 48000 Hz",
+    "fullDuration": 35.04,
+    "shippedSeconds": 11
   }
 }

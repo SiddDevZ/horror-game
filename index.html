@@ -100,6 +100,12 @@
       .btn.primary:active { box-shadow: inset 2px 3px 0 #9a8230, inset -2px -2px 0 #f6e59f; }
       .keys { margin: 22px 0 0; font-size: var(--fs-s); line-height: 2.1; color: var(--ink-faint); max-width: 56ch; text-shadow: var(--px-shadow); }
       .keys span { white-space: nowrap; margin-right: 12px; }
+      .credit { margin: 14px 0 0; font-size: var(--fs-s); line-height: 1.6; text-shadow: var(--px-shadow); }
+      .credit a { display: inline-flex; align-items: center; gap: 8px; min-height: 28px; color: var(--ink-faint); text-decoration: none; }
+      .credit a:hover, .credit a:focus-visible { color: var(--ink); outline: none; }
+      .credit b { color: var(--accent); font-weight: 400; }
+      .credit a:hover b, .credit a:focus-visible b { text-decoration: underline; text-underline-offset: 3px; }
+      .x-tile { display: inline-grid; place-items: center; width: 22px; height: 22px; color: var(--ink); background: #2a2519; border: 2px solid var(--px-edge); box-shadow: inset -2px -2px 0 var(--px-lo), inset 2px 2px 0 var(--px-hi); }
       kbd { font: inherit; font-size: 0.9em; color: var(--ink); background: #2a2519; border: 2px solid var(--px-edge); box-shadow: inset -2px -2px 0 var(--px-lo), inset 2px 2px 0 var(--px-hi); padding: 0 5px; margin-right: 5px; text-shadow: none; }
 
       /* 8 pixel hearts, top right */
@@ -503,6 +509,12 @@
           </div>
           <p class="keys kb-only"><span><kbd>WASD</kbd>move</span> <span><kbd>Shift</kbd>sprint</span> <span><kbd>E</kbd>use</span> <span><kbd>1</kbd>drink</span> <span><kbd>G</kbd>airhorn</span> <span><kbd>Q</kbd>look back</span> <span><kbd>F</kbd>flashlight</span> <span><kbd>Esc</kbd>pause</span></p>
           <p class="keys touch-only">Left thumb moves, push it to the edge to sprint. Drag on the right to look. <kbd>Use</kbd> opens, answers and holds.</p>
+          <p class="credit">
+            <a href="https://x.com/buildwithsid" target="_blank" rel="noopener noreferrer" aria-label="Made by @buildwithsid on X, opens in a new tab">
+              <span class="x-tile" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L1 2h6.4l4.4 5.9L18.9 2Zm-1.1 18.1h1.7L6.3 3.8H4.5l13.3 16.3Z"/></svg></span>
+              made by <b>@buildwithsid</b>, follow for more cool stuff :)
+            </a>
+          </p>
         </div>
       </section>
 

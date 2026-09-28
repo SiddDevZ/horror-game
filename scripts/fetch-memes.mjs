@@ -6,7 +6,7 @@
 // before the mp3 is accepted; the page title, view count and both urls are recorded in the manifest.
 // images: imgflip template images (i.imgflip.com) and wikimedia commons, recorded the same way.
 import { execFileSync, spawnSync } from 'node:child_process';
-import { mkdirSync, writeFileSync, readFileSync, existsSync, statSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync, existsSync, statSync, copyFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
@@ -385,6 +385,8 @@ const PARTY = {
   // +3 dB sub shelf on an already bass-heavy master; the 16 kHz lowpass keeps the encoder's own lowpass from ringing over the ceiling
   eq: 'highpass=f=28,bass=g=3:f=60:w=0.7,treble=g=1.5:f=9000,lowpass=f=16000:p=2',
   rate: 48000, bitrate: '96k', lufs: -9, maxTp: -1.0,
+  // party mode is capped at 10 s in game, so only this much ships (frame-copied, no re-encode): ~1/3 the download
+  gameSeconds: 11,
 };
 
 async function partyStage() {
@@ -473,6 +475,9 @@ async function partyStage() {
   const dropAt = r3(firstBeat + PARTY.leadBeats * beat);
   const fit = py('party_audio.py', ['beats', w('dec'), firstBeat, an.bpm]);
   const onset = py('audio_tools.py', ['onset', w('dec'), 0.05]);
+  const fullDuration = r3(+probe(out).format.duration);
+  ff(['-i', out, '-t', String(PARTY.gameSeconds), '-c:a', 'copy', '-map_metadata', '-1', w('short.mp3')]);
+  copyFileSync(w('short.mp3'), out);
   const duration = r3(+probe(out).format.duration);
   const party = {
     audio: 'audio/sigma.mp3',
@@ -481,7 +486,7 @@ async function partyStage() {
     reference: { title: src.ref.title, views: src.ref.views, sourceUrl: src.ref.sourceUrl, archiveUrl: src.ref.archiveMedia, foundAt: loc.offset, waveCorr: loc.waveCorr },
     duration, bpm: an.bpm, firstBeat, dropAt,
     // one pass through the 16 chorus bars (drop to the start of the outro): a musical loop if the party ever outlasts the file
-    loopStart: dropAt, loopEnd: r3(dropAt + 16 * bar),
+    loopStart: dropAt, loopEnd: r3(Math.min(dropAt + 16 * bar, duration - 0.05)), fullDuration, shippedSeconds: PARTY.gameSeconds,
     gainDb: r2(gainDb), limiterCeilingDb: r2(used.limit), playbackGainDb: r2(Math.max(0, PARTY.lufs - res.I)), lufs: r2(res.I), truePeak: res.tp, lra,
     onsetAt: onset.onsetAt, onsetThreshold: 0.05,
     edit: { sourceWindows: [[r3(a0), r3(a1 - 0.06)], [r3(sp.b0 - 0.06), r3(sp.b0 - 0.06 + sp.duration - sp.cutAt)]], spliceAt: r3(sp.cutAt), spliceCorr: sp.matchCorr, bars: `${PARTY.leadBeats} beats pickup + chorus 1 bars 1-8 + final chorus bars 9-16 + outro` },
