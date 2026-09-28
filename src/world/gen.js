@@ -1551,11 +1551,11 @@ function decorate(g) {
       task(g, 'straighten', s.x, s.z, s.yaw, p.w, 0.02, { y: p.data.y, posterIndex: g.features.indexOf(p) });
     }
   }
-  // floor decals
+  // floor stains were removed (user: no wet-looking floor); the rng draws stay so every seed keeps its layout
   const stains = rng.int(0, 2);
   for (let k = 0; k < stains; k++) {
     const s = floorSpot(g, 10, 0);
-    if (s) feature(g, 'stain', s.x, s.z, rng.range(-Math.PI, Math.PI), rng.range(0.4, 1.3), rng.range(0.3, 1.0), { v: rng.int(0, 3) });
+    if (s) { rng.range(-Math.PI, Math.PI); rng.range(0.4, 1.3); rng.range(0.3, 1.0); rng.int(0, 3); }
   }
   // recovery alcoves
   for (const room of g.rooms) {

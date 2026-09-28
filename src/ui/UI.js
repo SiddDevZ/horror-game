@@ -230,7 +230,7 @@ export class UI {
 
   _onState(state) {
     if (state === 'playing') this._show('playing');
-    else if (state === 'paused') { if (this.state !== 'settings') { this._show('pause'); $('btn-resume').focus({ preventScroll: true }); } }
+    else if (state === 'paused') { this._pausedAt = performance.now(); if (this.state !== 'settings') { this._show('pause'); $('btn-resume').focus({ preventScroll: true }); } }
     else if (state === 'dead') { this.deathT = 0; this._fillDeath(this.game && this.game.deathInfo); this._show('dead'); $('btn-again').focus({ preventScroll: true }); }
     else if (state === 'won') { this.deathT = 0; this._fillWin(this.game && this.game.winInfo); this._show('win'); $('btn-win-again').focus({ preventScroll: true }); }
     else if (state === 'menu') this.showStart();
@@ -906,6 +906,15 @@ export class UI {
       } else if (this.state === 'settings' && e.code === 'Escape') {
         e.preventDefault();
         this._closeSettings();
+      } else if (this.state === 'pause' && e.code === 'Escape' && !e.repeat && performance.now() - (this._pausedAt || 0) > 250) {
+        // esc toggles pause. browsers won't re-lock the mouse from the esc key itself, so if the lock
+        // doesn't come back, one click on the view grabs it (Input's mousedown handler)
+        e.preventDefault();
+        e.stopImmediatePropagation(); // the game's own esc handler must not see this press and pause again
+        const g = this.game;
+        if (!g) return;
+        g.resume();
+        if (!this.touch) setTimeout(() => { if (g.state === 'playing' && g.input && !g.input.locked) this.toast({ text: 'Click to look around', kind: 'info', ms: 2200 }); }, 180);
       }
     });
     this.settings.on((k) => { if (this.state === 'settings') this._syncKey(k); });

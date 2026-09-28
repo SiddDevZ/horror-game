@@ -365,10 +365,10 @@ await test('features: required fields, frequencies, recovery alcoves', () => {
   results.features = Object.fromEntries(Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([k, v]) => [k, +(v / all.length).toFixed(3)]));
   results.doorsPerChunk = all.reduce((s, [, c]) => s + c.doors.length, 0) / all.length;
   assert.ok(per >= 1 / 5 && per <= 1 / 3, `recovery alcoves ${per.toFixed(3)}/chunk (want 1 per 3-5)`);
-  for (const t of ['chair', 'chairStack', 'pile', 'desk', 'cooler', 'phone', 'sign', 'vent', 'exitSign', 'stain', 'darkTile', 'shelf', 'boxes', 'pipes', 'poster', 'vending', 'tv', 'radio', 'table', 'task', 'meme', 'counter', 'fridge', 'sink']) assert.ok(counts[t] > 0, `no ${t} anywhere`);
+  for (const t of ['chair', 'chairStack', 'pile', 'desk', 'cooler', 'phone', 'sign', 'vent', 'exitSign', 'darkTile', 'shelf', 'boxes', 'pipes', 'poster', 'vending', 'tv', 'radio', 'table', 'task', 'meme', 'counter', 'fridge', 'sink']) assert.ok(counts[t] > 0, `no ${t} anywhere`);
   for (const t of ['breaker', 'exitDoor']) assert.ok(!counts[t], `${t} outside a reserved landmark chunk`);
   assert.ok(!counts.puddle, 'no puddles anywhere (wet floor removed)');
-  assert.ok(counts.stain / all.length < 1.2, `stains ${(counts.stain / all.length).toFixed(2)}/chunk`);
+  assert.ok(!counts.stain, `no floor stains anywhere (found ${counts.stain || 0})`);
   assert.ok(results.doorsPerChunk > 0.3 && results.doorsPerChunk < 2, `doors per chunk ${results.doorsPerChunk}`);
   return `recovery ${per.toFixed(3)}/chunk, doors ${results.doorsPerChunk.toFixed(2)}/chunk`;
 });

@@ -6,7 +6,11 @@ import { UI } from './ui/UI.js';
 import { settings } from './settings.js';
 import { events } from './core/events.js';
 import { registerDebug, debugRoot } from './core/debug.js';
+import { inject as injectAnalytics } from '@vercel/analytics';
 import { touchPref } from './ui/touch.js';
+
+// vercel web analytics: production builds only (a no-op 404 on hosts other than vercel)
+if (import.meta.env.PROD) injectAnalytics({ mode: 'production' });
 
 const q = new URLSearchParams(location.search);
 const intParam = (k, d) => (q.has(k) && Number.isFinite(+q.get(k)) ? +q.get(k) >>> 0 : d);

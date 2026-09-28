@@ -38,7 +38,7 @@ Heads-up: the enemy songs, meme sounds and meme images are copyrighted material 
 | 8 / 9 / 0 | summon Kanye / Donald / Jeffrey (replaces the active villain) |
 | F | flashlight |
 | Left click | swing the hatchet (cosmetic, bumps doors) |
-| Esc | pause |
+| Esc | pause / resume |
 | F3 | debug overlay |
 
 You have 8 hearts (top right). A catch costs 3 hearts, so the third catch ends the run. An escape heals 1 heart, and a recovery alcove heals 3. The first villain is Kanye; after that the same villain never comes twice in a row, and unseen or long-absent ones are favoured. The rotation carries over between runs. You sprint slightly faster than every villain; a chase lasts 10-15 s at most if you keep moving (less if you break line of sight and get about 20 m away), but walking or standing still lets them keep going. Best distance and escape counts are saved locally.
