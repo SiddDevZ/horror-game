@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>NOCLIPPED | Backrooms meme horror</title>
+    <meta name="description" content="You noclipped into Level 0. Finish the work orders, find the exit, and outrun the badly cut-out memetic echoes." />
+    <meta name="theme-color" content="#e3c94f" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="./favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <meta property="og:title" content="NOCLIPPED" />
+    <meta property="og:description" content="An infinite Backrooms meme-horror game. Don't make eye contact with the PNG." />
+    <meta property="og:image" content="./apple-touch-icon.png" />
+    <link rel="preload" href="./assets/fonts/monocraft.woff2" as="font" type="font/woff2" crossorigin />
+    <style>
+      /* monocraft (OFL, public/assets/fonts/Monocraft-OFL.txt): latin subset. its pixel is 1/9 em, so 18/27/36 px are crisp */
+      @font-face { font-family: 'Monocraft'; src: url('./assets/fonts/monocraft.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+      @font-face { font-family: 'Monocraft'; src: url('./assets/fonts/monocraft-bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+      :root {
+        --bg: #14120b;
+        --ink: #f1ead2;
+        --ink-dim: #c7bea0;
+        --ink-faint: #9a9176;
+        --line: rgba(241, 234, 210, 0.16);
+        --panel: rgba(20, 18, 11, 0.9);
+        --accent: #e0c65c;
+        --accent-ink: #1b1809;
+        --danger: #e0231c;
+        /* pixel kit: hard outline + 2px bevel, no blur, no radius (matches the hearts' #1b0707 outline family) */
+        --px-edge: #0b0906;
+        --px-hi: rgba(241, 234, 210, 0.16);
+        --px-lo: rgba(0, 0, 0, 0.5);
+        --px-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+        --pixel: 'Monocraft', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+        --meme: Impact, 'Anton', 'Arial Black', 'Helvetica Neue', sans-serif;
+        --fs-s: 13.5px;
+        --fs-m: 18px;
+        --fs-l: 27px;
+        --fs-xl: 36px;
+        --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+        /* notches and home indicators (0 on desktops) */
+        --sa-t: env(safe-area-inset-top, 0px);
+        --sa-r: env(safe-area-inset-right, 0px);
+        --sa-b: env(safe-area-inset-bottom, 0px);
+        --sa-l: env(safe-area-inset-left, 0px);
+      }
+      * { box-sizing: border-box; }
+      [hidden] { display: none !important; }
+      html, body { margin: 0; height: 100%; background: var(--bg); overflow: hidden; color: var(--ink); font: var(--fs-m)/1.6 var(--pixel); -webkit-font-smoothing: antialiased; }
+      #game { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+      #fatal { position: fixed; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; color: var(--ink); background: var(--bg); z-index: 50; }
+      #ui { position: fixed; inset: 0; pointer-events: none; z-index: 10; }
+      #ui .screen { position: absolute; inset: 0; pointer-events: auto; }
+      .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+      /* pixel kit */
+      .px-panel { background: var(--panel); border: 2px solid var(--px-edge); box-shadow: inset 2px 2px 0 var(--px-hi), inset -2px -2px 0 var(--px-lo); }
+      .ico { display: inline-block; flex: none; width: 32px; height: 32px; background: url('./assets/gen/icons.png') no-repeat; background-size: 128px 96px; image-rendering: pixelated; }
+      .ico.x2 { width: 64px; height: 64px; background-size: 256px 192px; }
+      .ico-almond_water { background-position: 0 0; } .ico-airhorn { background-position: -32px 0; } .ico-vhs_tape { background-position: -64px 0; } .ico-breaker { background-position: -96px 0; }
+      .ico-exit_door { background-position: 0 -32px; } .ico-phone { background-position: -32px -32px; } .ico-compass_arrow { background-position: -64px -32px; } .ico-skull { background-position: -96px -32px; }
+      .ico-trophy { background-position: 0 -64px; } .ico-note { background-position: -32px -64px; } .ico-checkbox_unchecked { background-position: -64px -64px; } .ico-checkbox_checked { background-position: -96px -64px; }
+      .ico.x2.ico-skull { background-position: -192px -64px; } .ico.x2.ico-trophy { background-position: 0 -128px; } .ico.x2.ico-phone { background-position: -64px -64px; } .ico.x2.ico-note { background-position: -64px -128px; }
+      .no-icons .ico { display: none; }
+
+      /* loading: opaque until the first corridor is built */
+      .loading { background: var(--bg); display: flex; align-items: flex-end; padding: 0 clamp(24px, 6vw, 72px) clamp(28px, 8vh, 72px); transition: opacity 320ms var(--ease-out); z-index: 5; }
+      .loading.done { opacity: 0; pointer-events: none; }
+      .load-inner { width: min(320px, 100%); }
+      .load-label { font-size: var(--fs-s); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 10px; min-height: 1.6em; text-shadow: var(--px-shadow); }
+      .load-bar { height: 14px; padding: 2px; background: #0f0d08; border: 2px solid var(--px-edge); box-shadow: inset 2px 2px 0 var(--px-lo); overflow: hidden; }
+      .load-bar i { display: block; height: 100%; width: 100%; background: repeating-linear-gradient(90deg, var(--accent) 0 10px, transparent 10px 12px); transform-origin: left; transform: scaleX(0); transition: transform 240ms var(--ease-out); }
+
+      /* menus sit bottom-left over a scrim so the live corridor stays visible */
+      .menu { display: flex; align-items: flex-end; padding: clamp(20px, 6vw, 72px); padding-bottom: clamp(24px, 8vh, 80px);
+        background: linear-gradient(90deg, rgba(14, 12, 7, 0.84) 0%, rgba(14, 12, 7, 0.62) 36%, rgba(14, 12, 7, 0.14) 68%, rgba(14, 12, 7, 0) 82%);
+        animation: fade-in 180ms var(--ease-out); overflow-y: auto; }
+      .menu.dim { background: linear-gradient(90deg, rgba(14, 12, 7, 0.88) 0%, rgba(14, 12, 7, 0.7) 40%, rgba(14, 12, 7, 0.42) 100%); }
+      @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+      .block { width: min(520px, 100%); }
+      .osd { position: absolute; top: clamp(18px, 4vh, 36px); left: clamp(20px, 6vw, 72px); font-size: var(--fs-s); letter-spacing: 0.08em; color: var(--ink-dim); text-shadow: var(--px-shadow); font-variant-numeric: tabular-nums; }
+      h1, h2 { margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.15; text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6); }
+      h1 { font-size: var(--fs-xl); }
+      h2 { font-size: var(--fs-l); }
+      .logo { display: block; width: 456px; height: 104px; image-rendering: pixelated; filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.55)); }
+      .sub { margin: 14px 0 0; color: var(--ink-dim); max-width: 42ch; font-size: var(--fs-s); line-height: 1.7; text-shadow: var(--px-shadow); }
+      .actions { display: grid; gap: 10px; margin-top: 24px; width: min(280px, 100%); }
+      .btn { appearance: none; font: inherit; font-size: var(--fs-s); letter-spacing: 0.08em; text-transform: uppercase; text-align: left; color: var(--ink); background: #3a3424;
+        border: 2px solid var(--px-edge); border-radius: 0; box-shadow: inset 2px 2px 0 #5d5540, inset -2px -3px 0 #211d12; text-shadow: var(--px-shadow);
+        min-height: 44px; padding: 0 16px 2px; cursor: pointer; transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease; }
+      /* keyboard focus looks exactly like hover: brighter face + accent edge, never a separate outline box */
+      .btn:focus, .link:focus, input:focus, select:focus, [tabindex]:focus { outline: none; }
+      .btn:hover, .btn:focus-visible { background: #524a34; box-shadow: inset 2px 2px 0 #7a7052, inset -2px -3px 0 #2a2517; }
+      .btn:focus-visible::before { content: '\25B6'; margin-right: 8px; }
+      .btn:active { box-shadow: inset 2px 3px 0 #211d12, inset -2px -2px 0 #5d5540; padding-top: 2px; padding-bottom: 0; }
+      .btn.primary { background: var(--accent); color: var(--accent-ink); font-weight: 700; text-shadow: 1px 1px 0 rgba(255, 246, 200, 0.5); box-shadow: inset 2px 2px 0 #f6e59f, inset -2px -3px 0 #9a8230; }
+      .btn.primary:hover, .btn.primary:focus-visible { background: #f2dd84; box-shadow: inset 2px 2px 0 #fff1bf, inset -2px -3px 0 #a88f38; }
+      .btn.primary:active { box-shadow: inset 2px 3px 0 #9a8230, inset -2px -2px 0 #f6e59f; }
+      .keys { margin: 22px 0 0; font-size: var(--fs-s); line-height: 2.1; color: var(--ink-faint); max-width: 56ch; text-shadow: var(--px-shadow); }
+      .keys span { white-space: nowrap; margin-right: 12px; }
+      kbd { font: inherit; font-size: 0.9em; color: var(--ink); background: #2a2519; border: 2px solid var(--px-edge); box-shadow: inset -2px -2px 0 var(--px-lo), inset 2px 2px 0 var(--px-hi); padding: 0 5px; margin-right: 5px; text-shadow: none; }
+
+      /* 8 pixel hearts, top right */
+      .hearts { position: absolute; top: 14px; right: 16px; image-rendering: pixelated; filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.35)); }
+      /* villain lineup: the three cutouts, deliberately crooked */
+      .lineup { display: flex; gap: 14px; align-items: flex-end; margin: 22px 0 0; }
+      .lineup figure { margin: 0; text-align: center; }
+      .lineup img { display: block; height: 92px; width: auto; filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.5)); }
+      .lineup figure:nth-child(1) img { transform: rotate(-4deg); }
+      .lineup figure:nth-child(2) img { transform: rotate(3deg) translateY(4px); }
+      .lineup figure:nth-child(3) img { transform: rotate(-2deg); }
+      .lineup figcaption { font-size: var(--fs-s); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-top: 6px; text-shadow: var(--px-shadow); }
+
+      /* death + win */
+      .menu .block { position: relative; z-index: 1; }
+      .death-face { position: absolute; right: 6vw; bottom: 0; height: min(78vh, 640px); width: auto; transform: rotate(-6deg); transform-origin: bottom center; pointer-events: none; }
+      .end-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+      .line { font-size: var(--fs-l); font-weight: 700; line-height: 1.3; margin: 0; max-width: 22ch; text-wrap: balance; text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6); }
+      .end-sub { margin: 10px 0 0; color: var(--ink-dim); font-size: var(--fs-s); max-width: 44ch; text-shadow: var(--px-shadow); }
+      .stats { display: grid; grid-template-columns: repeat(3, auto); gap: 2px 26px; margin: 22px 0 0; padding: 12px 16px; justify-content: start; font-variant-numeric: tabular-nums; width: fit-content; max-width: 100%; }
+      .stats.wide { grid-template-columns: repeat(4, auto); }
+      .stats dt { font-size: var(--fs-s); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); grid-row: 1; }
+      .stats dd { margin: 0; font-size: var(--fs-m); grid-row: 2; }
+      .best-flag { color: var(--accent); }
+      .hint { margin: 18px 0 0; font-size: var(--fs-s); color: var(--ink-faint); text-shadow: var(--px-shadow); }
+      .hint kbd { margin: 0 2px; }
+
+      /* settings */
+      .settings { display: flex; align-items: center; justify-content: center; padding: clamp(12px, 4vw, 48px); background: rgba(14, 12, 7, 0.6); animation: fade-in 160ms var(--ease-out); }
+      .sheet { width: min(900px, 100%); max-height: calc(100dvh - 24px); overflow: auto; padding: 22px 26px 20px; overscroll-behavior: contain; }
+      .sheet-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+      .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; }
+      @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } .cols > div + div { margin-top: 20px; } }
+      fieldset + fieldset { margin-top: 20px; }
+      fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+      legend { padding: 0; margin: 0 0 6px; font-size: var(--fs-s); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-shadow: var(--px-shadow); }
+      .row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) 4em; align-items: center; gap: 12px; min-height: 40px; border-top: 2px solid rgba(241, 234, 210, 0.07); }
+      .row select { grid-column: 2 / 4; }
+      .row label { font-size: var(--fs-s); color: var(--ink); }
+      .row output { font-size: var(--fs-s); color: var(--ink-dim); text-align: right; font-variant-numeric: tabular-nums; }
+      .row.check { grid-template-columns: minmax(0, 1fr) auto; }
+      input[type='range'] { -webkit-appearance: none; appearance: none; width: 100%; margin: 0; height: 28px; background: transparent; cursor: pointer; }
+      input[type='range']::-webkit-slider-runnable-track { height: 10px; background: #0f0d08; border: 2px solid var(--px-edge); box-shadow: inset 2px 2px 0 var(--px-lo); }
+      input[type='range']::-moz-range-track { height: 6px; background: #0f0d08; border: 2px solid var(--px-edge); }
+      input[type='range']::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 22px; margin-top: -8px; background: var(--accent); border: 2px solid var(--px-edge); box-shadow: inset 2px 2px 0 #f6e59f, inset -2px -2px 0 #9a8230; border-radius: 0; }
+      input[type='range']::-moz-range-thumb { width: 10px; height: 18px; background: var(--accent); border: 2px solid var(--px-edge); border-radius: 0; }
+      input[type='checkbox'] { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; margin: 0; background: url('./assets/gen/icons.png') -69px -69px / 128px 96px no-repeat; image-rendering: pixelated; cursor: pointer; }
+      input[type='checkbox']:checked { background-position: -101px -69px; }
+      .no-icons input[type='checkbox'] { width: 20px; height: 20px; margin: 0; background: #0f0d08; border: 2px solid var(--ink-dim); }
+      .no-icons input[type='checkbox']:checked { background: var(--accent); }
+      select { font: inherit; font-size: var(--fs-s); color: var(--ink); background: #2a2519; border: 2px solid var(--px-edge); box-shadow: inset 2px 2px 0 var(--px-hi), inset -2px -2px 0 var(--px-lo); border-radius: 0; min-height: 34px; padding: 0 8px; width: 100%; cursor: pointer; }
+      /* settings rows: the focused control's row lights up; select / slider edges take the accent */
+      .row:has(:focus-visible) { background: rgba(224, 198, 92, 0.1); }
+      select:focus-visible, select:hover { border-color: var(--accent); }
+      input[type='range']:focus-visible::-webkit-slider-runnable-track { border-color: var(--accent); }
+      input[type='range']:focus-visible::-webkit-slider-thumb { background: #f2dd84; }
+      input[type='checkbox']:focus-visible { filter: brightness(1.35); }
+      .sheet-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px; }
+      .sheet-foot .btn { min-width: 140px; }
+      .link { appearance: none; background: none; border: 0; font: inherit; font-size: var(--fs-s); color: var(--ink-faint); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; min-height: 44px; padding: 0 4px; }
+      .link:hover, .link:focus-visible { color: var(--accent); }
+
+      /* hud: the reel's tiny dot plus small pixel widgets at the edges */
+      #hud { position: absolute; inset: 0; pointer-events: none; }
+      .crosshair { position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; margin: -2px 0 0 -2px; background: rgba(246, 242, 228, 0.92); box-shadow: 0 0 0 1px rgba(20, 18, 11, 0.35); }
+      .prompt { position: absolute; left: 50%; top: calc(50% + 44px); transform: translateX(-50%); white-space: nowrap; font-size: var(--fs-s); color: var(--ink); padding: 4px 10px 5px; text-shadow: var(--px-shadow); }
+      .prompt kbd { color: var(--ink); }
+
+      /* objective checklist, top left */
+      .objectives { position: absolute; top: 12px; left: 12px; width: 290px; max-width: calc(100vw - 24px); padding: 8px 10px 9px; font-size: var(--fs-s); line-height: 1.35; }
+      .obj-head { display: flex; justify-content: space-between; gap: 10px; font-size: var(--fs-s); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); text-shadow: var(--px-shadow); margin-bottom: 4px; }
+      .obj-head b { font-weight: 400; color: var(--ink-dim); font-variant-numeric: tabular-nums; }
+      .obj-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
+      .obj-list li { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; gap: 7px; min-height: 24px; color: var(--ink-dim); text-shadow: var(--px-shadow); transition: color 200ms ease; }
+      .obj-list .ico { width: 22px; height: 22px; background-size: 128px 96px; }
+      .obj-list .ico-checkbox_unchecked { background-position: -69px -69px; } .obj-list .ico-checkbox_checked { background-position: -101px -69px; }
+      .obj-list .txt { overflow-wrap: anywhere; }
+      .obj-list .prog { font-variant-numeric: tabular-nums; color: var(--ink-faint); }
+      .obj-list li.active { color: var(--ink); }
+      .obj-list li.active .txt::before { content: '\25B6'; color: var(--accent); margin-right: 6px; }
+      .obj-list li.active .prog { color: var(--accent); }
+      .obj-list li.done { color: var(--ink-dim); }
+      .obj-list li.done .txt { text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: rgba(224, 198, 92, 0.75); }
+      .no-icons .obj-list li { grid-template-columns: 0 minmax(0, 1fr) auto; }
+
+      /* compass, top centre: arrow slot + distance */
+      .compass { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; padding: 3px 12px 3px 3px; font-size: var(--fs-s); font-variant-numeric: tabular-nums; text-shadow: var(--px-shadow); white-space: nowrap; }
+      .slot { position: relative; display: grid; place-items: center; width: 44px; height: 44px; background: #1a170f; border: 2px solid var(--px-edge); box-shadow: inset 2px 2px 0 var(--px-lo), inset -2px -2px 0 var(--px-hi); }
+      .compass .slot { width: 38px; height: 38px; }
+      .compass .ico { transform: rotate(var(--rot, 0deg)); }
+      .compass .dist { min-width: 5ch; }
+      .compass .behind { color: var(--accent); }
+
+      /* inventory hotbar, bottom left */
+      .hotbar { position: absolute; left: 12px; bottom: 12px; display: flex; gap: 0; padding: 2px; }
+      .hotbar .slot { width: 52px; height: 52px; }
+      .hotbar .slot .ico { margin: 6px 0 0 4px; }
+      .hotbar .slot + .slot { border-left-width: 0; }
+      .hotbar .key { position: absolute; top: 1px; left: 4px; font-size: 12px; line-height: 1.1; color: var(--ink-dim); text-shadow: var(--px-shadow); }
+      .hotbar .count { position: absolute; right: 3px; bottom: 0; font-size: var(--fs-m); line-height: 1.1; color: var(--ink); text-shadow: var(--px-shadow); font-variant-numeric: tabular-nums; }
+      .hotbar .slot.empty .ico { opacity: 0.3; filter: grayscale(1); }
+      .hotbar .slot.empty .count { color: var(--ink-faint); }
+      .hotbar .slot.bump { border-color: var(--accent); }
+
+      /* toasts: calm info/lore under the compass; meme captions big and dumb in the upper third */
+      .toasts { position: absolute; top: 64px; left: 50%; transform: translateX(-50%); display: grid; justify-items: center; gap: 6px; width: min(520px, calc(100vw - 24px)); }
+      .toast { padding: 5px 12px 6px; font-size: var(--fs-s); line-height: 1.45; text-align: center; text-shadow: var(--px-shadow); transition: opacity 220ms ease, transform 220ms var(--ease-out); }
+      .toast.lore { border-color: #3d3316; box-shadow: inset 2px 2px 0 rgba(224, 198, 92, 0.22), inset -2px -2px 0 var(--px-lo); }
+      .toast.lore::before { content: 'M.E.G. \25B8 '; color: var(--accent); }
+      .toast.out { opacity: 0; transform: translateY(-6px); }
+      .meme-toast { position: absolute; left: 50%; top: 22%; width: min(760px, calc(100vw - 32px)); transform: translateX(-50%) rotate(-2deg); text-align: center; font: 400 clamp(30px, 5.2vw, 56px)/1.05 var(--meme); text-transform: uppercase;
+        letter-spacing: 0.01em; color: #fbfaf5; -webkit-text-stroke: 3px #0b0906; paint-order: stroke fill; text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.55); text-wrap: balance; transition: opacity 180ms ease, transform 220ms var(--ease-out); }
+      .meme-toast.out { opacity: 0; transform: translateX(-50%) rotate(-2deg) scale(0.94); }
+
+      /* lore reader + intro transmission */
+      .reader { display: grid; place-items: center; padding: 16px; background: rgba(10, 9, 5, 0.62); animation: fade-in 160ms var(--ease-out); }
+      .reader-card { width: min(620px, 100%); max-height: calc(100dvh - 32px); display: flex; flex-direction: column; padding: 18px 22px 14px; }
+      .reader-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+      .reader-head h2 { font-size: var(--fs-m); color: var(--accent); letter-spacing: 0.06em; line-height: 1.35; }
+      .reader-body { overflow-y: auto; white-space: pre-line; font-size: var(--fs-m); line-height: 1.6; color: var(--ink); max-width: 60ch; padding-right: 6px; text-shadow: var(--px-shadow); }
+      .reader-foot { margin: 12px 0 0; padding-top: 8px; border-top: 2px solid rgba(241, 234, 210, 0.1); font-size: var(--fs-s); color: var(--ink-faint); }
+      .reader-foot kbd { margin: 0 3px; }
+      .intro .reader-card { border-color: #3d3316; }
+      .tx { display: flex; align-items: center; gap: 8px; font-size: var(--fs-s); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+      .tx i { width: 10px; height: 10px; background: var(--danger); box-shadow: 0 0 0 2px var(--px-edge); animation: blink 1s steps(2, jump-none) infinite; }
+      @keyframes blink { 50% { opacity: 0; } }
+      .intro .reader-body p { margin: 0 0 0.9em; opacity: 0; transition: opacity 260ms ease; }
+      .intro .reader-body p.on { opacity: 1; }
+
+      /* objective sub-steps: nearby task names under the active objective */
+      .obj-list li.sub-wrap { display: block; min-height: 0; }
+      .obj-sub { list-style: none; margin: 0 0 2px 29px; padding: 0; display: grid; gap: 0; font-size: 12px; color: var(--ink-faint); }
+      .obj-sub li { display: block; min-height: 0; padding-left: 10px; text-indent: -10px; }
+      .obj-sub li::before { content: '\2022'; margin-right: 4px; color: var(--accent); }
+      .obj-sub li.done { text-decoration: line-through; text-decoration-color: rgba(224, 198, 92, 0.7); }
+      .obj-sub .d { color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+
+      /* task mini-games (gameplay owns input, this only renders): swipe, wires, hold, press */
+      .task { position: absolute; left: 50%; bottom: 84px; transform: translateX(-50%); width: min(460px, calc(100vw - 20px)); padding: 10px 14px 10px; font-size: var(--fs-s); text-shadow: var(--px-shadow); transition: opacity 160ms ease; }
+      .task.hide { opacity: 0; }
+      .task-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+      .task-head h3 { margin: 0; font-size: var(--fs-m); line-height: 1.2; color: var(--ink); text-transform: uppercase; letter-spacing: 0.04em; }
+      .task-tag { color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+      .task-hint { margin: 8px 0 0; color: var(--ink-dim); }
+      .task-hint kbd { margin: 0 2px; }
+      .task-msg { margin: 6px 0 0; min-height: 1.4em; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+      .task-msg .ico { width: 22px; height: 22px; background-position: -101px -69px; }
+      .task.ok { border-color: #1d3a12; box-shadow: inset 2px 2px 0 rgba(120, 220, 90, 0.25), inset -2px -2px 0 var(--px-lo); }
+      .task.ok .task-msg { color: #9be07a; }
+      .task.fail { border-color: #4a0f0b; box-shadow: inset 2px 2px 0 rgba(224, 35, 28, 0.35), inset -2px -2px 0 var(--px-lo); }
+      .task.fail .task-msg { color: #ff8a80; }
+      .task.fail .task-msg::before { content: 'X'; display: inline-grid; place-items: center; width: 18px; height: 18px; background: var(--danger); color: #1b0707; border: 2px solid #1b0707; font-size: 12px; line-height: 1; text-shadow: none; }
+      /* bars share the loading bar's segmented pixel fill */
+      .bar { position: relative; height: 18px; padding: 2px; background: #0f0d08; border: 2px solid var(--px-edge); box-shadow: inset 2px 2px 0 var(--px-lo); }
+      .bar i { display: block; height: 100%; width: 100%; background: repeating-linear-gradient(90deg, var(--accent) 0 10px, transparent 10px 12px); transform-origin: left; transform: scaleX(0); }
+      .bar .win { position: absolute; top: 0; bottom: 0; background: rgba(120, 220, 90, 0.32); border-left: 2px solid #9be07a; border-right: 2px solid #9be07a; }
+      .bar .mark { position: absolute; top: -6px; bottom: -6px; width: 4px; margin-left: -2px; background: var(--ink); box-shadow: 0 0 0 2px var(--px-edge); }
+      /* card reader: lcd + slot with a sliding id card (among us admin, but it is a backrooms badge) */
+      .reader-lcd { height: 30px; display: grid; place-items: center; background: #0d1a0c; border: 2px solid var(--px-edge); box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.6); color: #7fe35d; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; text-shadow: 0 0 0 transparent; margin-bottom: 8px; }
+      .task.fail .reader-lcd { color: #ff6b5e; }
+      .slot-track { position: relative; height: 46px; background: #2a2519; border: 2px solid var(--px-edge); box-shadow: inset 0 18px 0 -14px #0b0906, inset 0 -18px 0 -14px #0b0906; margin-bottom: 10px; overflow: hidden; }
+      .id-card { position: absolute; top: 5px; left: 0; width: 64px; height: 32px; background: #e9e1c6; border: 2px solid var(--px-edge); box-shadow: inset 0 8px 0 0 #3d7fd6, inset -2px -2px 0 #b8ae8c; transform: translateX(0); }
+      .id-card::before { content: ''; position: absolute; left: 5px; top: 11px; width: 12px; height: 13px; background: #8a7b58; box-shadow: 0 0 0 2px var(--px-edge); }
+      .id-card::after { content: 'M.E.G.'; position: absolute; left: 24px; top: 10px; font-size: 9px; line-height: 1; color: #1b1809; text-shadow: none; }
+      /* wires: svg with pixel caps; right side carries the 1-4 key labels */
+      .wires svg { display: block; width: 100%; height: auto; shape-rendering: crispEdges; }
+      .wires text { font: 700 16px var(--pixel); fill: var(--ink); }
+      .task.flash { animation: task-flash 300ms steps(2, jump-none) 1; }
+      @keyframes task-flash { 50% { border-color: var(--danger); } }
+      /* multi-press: one pip per hit */
+      .pips { display: flex; gap: 6px; align-items: center; }
+      .pips b { width: 22px; height: 22px; background: #1a170f; border: 2px solid var(--px-edge); box-shadow: inset 2px 2px 0 var(--px-lo); }
+      .pips b.on { background: var(--accent); box-shadow: inset 2px 2px 0 #f6e59f, inset -2px -2px 0 #9a8230; }
+      .pips span { margin-left: 8px; font-size: var(--fs-m); font-variant-numeric: tabular-nums; }
+
+      /* v4 party mode: minecraft's jukebox "now playing" line over the hotbar row, a title-screen splash and an xp-style
+         song bar. letters are coloured per beat from js (minecraft chat colours, each with its 1/4 drop shadow) */
+      .party { position: absolute; left: 0; right: 0; bottom: 16px; display: grid; justify-items: center; }
+      .party-stack { display: grid; justify-items: center; gap: 2px; opacity: 0; transform-origin: 50% 100%; }
+      .party-title { position: relative; margin: 0; padding-top: 46px; font: 700 54px/1.1 var(--pixel); white-space: nowrap; --o: 6px; }
+      .party-title .l { display: inline-block; color: #ff5555; text-shadow: var(--o) var(--o) 0 var(--sh, #3f1515); }
+      .party-title .gap { display: inline-block; width: 0.4em; }
+      .party-splash { position: absolute; right: -28px; top: 2px; font: 700 var(--fs-l)/1 var(--pixel); color: #ffff55; text-shadow: 3px 3px 0 #3f3f15; white-space: nowrap; transform: rotate(-6deg); transform-origin: 50% 50%; }
+      .party-now { margin: 4px 0 2px; font-size: var(--fs-s); line-height: 1.3; color: #55ffff; text-shadow: 2px 2px 0 #153f3f; white-space: nowrap; }
+      .party-song { width: min(364px, calc(100vw - 40px)); }
+      .party-xp { height: 14px; padding: 2px; background: #0f0d08; border: 2px solid var(--px-edge); box-shadow: inset 2px 2px 0 var(--px-lo); }
+      .party-xp i { display: block; height: 100%; width: 100%; background: repeating-linear-gradient(90deg, #80ff20 0 14px, #3f8a10 14px 16px); box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.28); transform-origin: left; transform: scaleX(0); }
+      .party-meta { display: flex; justify-content: space-between; gap: 12px; margin-top: 2px; font-size: 12px; line-height: 1.5; color: var(--ink-dim); text-shadow: var(--px-shadow); font-variant-numeric: tabular-nums; white-space: nowrap; }
+      .party-meta .time { color: #80ff20; }
+
+      @media (max-width: 640px) {
+        :root { --fs-l: 22px; --fs-xl: 30px; }
+        /* above the hotbar */
+        .party { bottom: 80px; }
+        .party-title { font-size: 36px; padding-top: 32px; --o: 4px; }
+        .party-splash { font-size: 18px; right: -14px; top: 2px; text-shadow: 2px 2px 0 #3f3f15; }
+        .task { bottom: 72px; padding: 8px 10px; }
+        .obj-sub { margin-left: 0; }
+        .logo { width: 228px; height: 52px; }
+        .hearts { top: 10px; right: 10px; width: 158px !important; height: 20px !important; }
+        .objectives { top: 10px; left: 10px; width: 176px; padding: 6px 8px 7px; font-size: 12px; }
+        .obj-head { font-size: 12px; }
+        /* small screens: header count + the current objective only */
+        .obj-list > li:not(.active):not(.sub-wrap) { display: none; }
+        .compass { top: 40px; left: auto; right: 10px; transform: none; padding-right: 8px; }
+        .compass .slot { width: 34px; height: 34px; }
+        .toasts { top: auto; bottom: 76px; }
+        .meme-toast { top: 26%; }
+        .hotbar { left: 10px; bottom: 10px; }
+        .death-face { height: 40vh; right: 0; }
+        .lineup img { height: 64px; }
+        .stats, .stats.wide { grid-template-columns: repeat(2, auto); }
+        .stats dt, .stats dd { grid-row: auto; }
+        .reader-card { padding: 14px 14px 12px; }
+        .reader-body { font-size: 15px; }
+      }
+
+      /* ---------- touch (html.touch: coarse pointer, first real touch, or ?touch=1) ----------
+         left thumb: a floating stick anywhere in the left 45%; right: drag to look; pixel buttons bottom right.
+         the hud moves out of both thumbs' way and inside the safe area. */
+      html:not(.touch) .touch-only { display: none !important; }
+      .touch .kb-only { display: none !important; }
+      html.touch, html.touch body { touch-action: none; overscroll-behavior: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
+      .touch .menu, .touch .sheet, .touch .reader-body { touch-action: pan-y; overscroll-behavior: contain; }
+      .touch button, .touch select, .touch input { touch-action: manipulation; }
+      .touch { --pad: 16px; --use: 76px; --tb: 58px; --tg: 10px; --side: calc(max(var(--sa-l), var(--sa-r)) + 240px); --mid: min(220px, 50vw - var(--side)); }
+      .touch-layer { position: absolute; inset: 0; pointer-events: auto; touch-action: none; }
+      .touch .tbtn { position: absolute; display: grid; place-items: center; appearance: none; margin: 0; padding: 0 0 2px; width: var(--tb); height: var(--tb); font: 700 var(--fs-s)/1 var(--pixel); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink);
+        background: rgba(58, 52, 36, 0.74); border: 2px solid var(--px-edge); border-radius: 0; box-shadow: inset 2px 2px 0 rgba(93, 85, 64, 0.9), inset -2px -3px 0 rgba(33, 29, 18, 0.9); text-shadow: var(--px-shadow); touch-action: none; cursor: pointer; }
+      .touch .tbtn.on { background: rgba(82, 74, 52, 0.86); box-shadow: inset 2px 3px 0 #211d12, inset -2px -2px 0 #5d5540; padding: 2px 0 0; }
+      .t-use { right: calc(var(--sa-r) + var(--pad)); bottom: calc(var(--sa-b) + var(--pad)); }
+      .touch .t-use { width: var(--use); height: var(--use); font-size: var(--fs-m); }
+      /* something to use under the crosshair: the button lights up like the primary menu button */
+      .touch .t-use.ready { background: var(--accent); color: var(--accent-ink); text-shadow: 1px 1px 0 rgba(255, 246, 200, 0.5); box-shadow: inset 2px 2px 0 #f6e59f, inset -2px -3px 0 #9a8230; }
+      .touch .t-use.ready.on { background: #c9b150; box-shadow: inset 2px 3px 0 #9a8230, inset -2px -2px 0 #f6e59f; }
+      .t-back { right: calc(var(--sa-r) + var(--pad) + var(--use) + var(--tg)); bottom: calc(var(--sa-b) + var(--pad)); }
+      .t-light { right: calc(var(--sa-r) + var(--pad) + (var(--use) - var(--tb)) / 2); bottom: calc(var(--sa-b) + var(--pad) + var(--use) + var(--tg)); }
+      .touch .t-light.lit { color: var(--accent); }
+      .t-drink { right: calc(var(--sa-r) + var(--pad) + var(--use) + var(--tg)); bottom: calc(var(--sa-b) + var(--pad) + var(--tb) + var(--tg)); }
+      .t-horn { right: calc(var(--sa-r) + var(--pad) + var(--use) + var(--tb) + 2 * var(--tg)); bottom: calc(var(--sa-b) + var(--pad)); }
+      /* item buttons are hotbar slots you can press */
+      .touch .t-item { background: rgba(26, 23, 15, 0.8); box-shadow: inset 2px 2px 0 var(--px-lo), inset -2px -2px 0 var(--px-hi); }
+      .t-item .count { position: absolute; right: 3px; bottom: 1px; font-size: var(--fs-m); font-weight: 400; line-height: 1.1; font-variant-numeric: tabular-nums; }
+      .t-item .lbl { display: none; }
+      .no-icons .t-item .lbl { display: block; }
+      .t-pause { right: calc(var(--sa-r) + 10px); top: calc(var(--sa-t) + 10px); }
+      .touch .t-pause { width: 44px; height: 44px; }
+      .t-pause i { width: 14px; height: 16px; border-left: 5px solid var(--ink); border-right: 5px solid var(--ink); filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.6)); }
+      /* stick: rests faded bottom left, jumps under the thumb */
+      .stick { position: absolute; left: calc(var(--sa-l) + var(--pad) + 4px); bottom: calc(var(--sa-b) + var(--pad) + 4px); width: 120px; height: 120px; background: rgba(20, 18, 11, 0.42); border: 2px solid var(--px-edge);
+        box-shadow: inset 2px 2px 0 var(--px-lo), inset -2px -2px 0 var(--px-hi); opacity: 0.45; pointer-events: none; transition: opacity 120ms ease; }
+      .stick.live { opacity: 0.95; transition: none; }
+      .stick .knob { position: absolute; left: 32px; top: 32px; width: 52px; height: 52px; background: #b9b09a; border: 2px solid var(--px-edge); box-shadow: inset 2px 2px 0 #e4dcc2, inset -2px -3px 0 #7d755f; }
+      .stick.run { border-color: var(--accent); }
+      .stick.run .knob { background: var(--accent); box-shadow: inset 2px 2px 0 #f6e59f, inset -2px -3px 0 #9a8230; }
+      .stick .run-tag { position: absolute; left: 0; right: 0; top: -26px; text-align: center; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); text-shadow: var(--px-shadow); visibility: hidden; }
+      .stick.run .run-tag { visibility: visible; }
+
+      /* hud on touch: compact checklist top left, pause + hearts top right, compass top centre (landscape) */
+      .touch .hotbar { display: none !important; }
+      .touch .objectives { top: calc(var(--sa-t) + 10px); left: calc(var(--sa-l) + 10px); width: 210px; padding: 6px 8px 7px; font-size: 12px; }
+      .touch .obj-head { font-size: 12px; }
+      .touch .obj-list > li:not(.active):not(.sub-wrap) { display: none; }
+      .touch .obj-sub { margin-left: 0; }
+      .touch .obj-sub li:nth-child(n+3) { display: none; }
+      .touch .hearts { top: calc(var(--sa-t) + 22px); right: calc(var(--sa-r) + 64px); width: 158px !important; height: 20px !important; }
+      .touch .compass { top: calc(var(--sa-t) + 10px); left: 50%; right: auto; transform: translateX(-50%); }
+      .touch .compass .slot { width: 34px; height: 34px; }
+      /* landscape: toasts take the free column under the hearts, newest two only, so they clear the task panel */
+      .touch .toasts { top: calc(var(--sa-t) + 54px); bottom: auto; left: auto; right: calc(var(--sa-r) + 10px); transform: none; justify-items: end; width: min(250px, calc(50vw - var(--sa-r) - 14px - var(--mid))); }
+      /* phones: the newest two toasts, a few lines each; ui.js drops the older one when the stack would hit something */
+      .touch .toast { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
+      .touch .toast.gone { display: none; }
+      /* meme caption: two short lines in the centre column under the compass (portrait: under the top hud, set by ui.js) */
+      .touch .meme-toast { top: calc(var(--sa-t) + 60px); width: calc(2 * var(--mid)); font-size: 24px; line-height: 1.05; -webkit-text-stroke: 2px #0b0906; text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.55); transform: translateX(-50%) rotate(-1.5deg); transition: opacity 120ms ease, transform 160ms var(--ease-out); }
+      .touch .meme-toast.out { transform: translateX(-50%) rotate(-1.5deg) scale(0.94); }
+      /* the lower middle belongs to task panels and the party banner on touch, so the prompt sits above the dot */
+      .touch .prompt { top: auto; bottom: calc(50% + 16px); white-space: normal; text-align: center; width: max-content; max-width: calc(2 * var(--mid)); }
+      .touch .task { bottom: calc(var(--sa-b) + 10px); width: min(440px, calc(100vw - 2 * var(--side))); padding: 8px 10px; }
+      .touch .wires svg { max-height: 84px; }
+      .touch .task-msg:empty { min-height: 0; margin: 0; }
+      .touch .party { bottom: calc(var(--sa-b) + 10px); }
+      .touch .party-title { font-size: 36px; padding-top: 32px; --o: 4px; }
+      .touch .party-splash { font-size: 18px; right: -14px; top: 2px; text-shadow: 2px 2px 0 #3f3f15; }
+      .touch .party-song { width: min(364px, calc(100vw - 2 * var(--side))); }
+      .touch .party-meta span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+      .touch .menu { padding-left: calc(var(--sa-l) + clamp(20px, 6vw, 72px)); padding-right: calc(var(--sa-r) + 20px); padding-bottom: calc(var(--sa-b) + clamp(20px, 6vh, 60px)); }
+      .touch .osd { top: calc(var(--sa-t) + 14px); left: calc(var(--sa-l) + clamp(20px, 6vw, 72px)); }
+      .touch .reader-foot { font-size: var(--fs-s); }
+      /* no Esc on a phone: Back stays reachable while the settings scroll */
+      .touch .sheet-foot { position: sticky; bottom: -20px; margin: 12px -26px -20px; padding: 8px 26px 12px; background: #17150d; border-top: 2px solid rgba(241, 234, 210, 0.1); }
+      /* wiring panel: one big key per terminal, in its wire colour */
+      .wire-keys { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 8px; }
+      .wire-key { pointer-events: auto; touch-action: none; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; appearance: none; margin: 0; padding: 0 0 2px; font: 700 var(--fs-m)/1 var(--pixel); color: var(--ink);
+        background: #3a3424; border: 2px solid var(--px-edge); border-radius: 0; box-shadow: inset 2px 2px 0 #5d5540, inset -2px -3px 0 #211d12; text-shadow: var(--px-shadow); cursor: pointer; }
+      .wire-key:active { box-shadow: inset 2px 3px 0 #211d12, inset -2px -2px 0 #5d5540; padding: 2px 0 0; }
+      .wire-key b { width: 16px; height: 16px; border: 2px solid var(--px-edge); }
+      /* small hint on the start screen when a phone is held upright */
+      .rotate-hint { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; padding: 4px 4px 4px 12px; width: fit-content; max-width: 100%; font-size: var(--fs-s); line-height: 1.4; color: var(--ink-dim); text-shadow: var(--px-shadow); }
+      .rotate-hint .btn { min-width: 44px; padding: 0 12px 2px; text-align: center; }
+      @media (orientation: landscape) { .rotate-hint { display: none !important; } }
+      /* short landscape phones: a smaller title block so Start stays on screen */
+      @media (max-height: 500px) {
+        .touch .logo { width: 228px; height: 52px; }
+        .touch .sub { margin-top: 8px; }
+        .touch .actions { margin-top: 14px; }
+        .touch .lineup { display: none; }
+        .touch .keys { margin-top: 12px; line-height: 1.8; }
+        .touch .death-face { height: 70vh; }
+      }
+      /* portrait: controls take the bottom band, so hearts + compass stack under pause and panels sit above the thumbs */
+      @media (orientation: portrait) {
+        .touch { --band: calc(var(--sa-b) + var(--pad) + var(--use) + var(--tg) + var(--tb) + 12px); }
+        .touch .objectives { width: min(210px, calc(100vw - 20px - 176px)); }
+        .touch .hearts { top: calc(var(--sa-t) + 62px); right: calc(var(--sa-r) + 10px); }
+        .touch .compass { top: calc(var(--sa-t) + 92px); left: auto; right: calc(var(--sa-r) + 10px); transform: none; }
+        /* toasts above the dot (newest two), the prompt below it, panels and the banner above the thumbs */
+        .touch .toasts { top: auto; bottom: calc(50% + 40px); left: 50%; right: auto; transform: translateX(-50%); justify-items: center; width: calc(100vw - 20px - var(--sa-l) - var(--sa-r)); }
+        .touch .prompt { top: calc(50% + 24px); bottom: auto; max-width: calc(100vw - 24px); }
+        .touch .task { bottom: var(--band); width: min(440px, calc(100vw - 20px)); }
+        .touch .wires svg { max-height: 110px; }
+        .touch .party { bottom: var(--band); }
+        .touch .party-song { width: min(364px, calc(100vw - 40px)); }
+        .touch .meme-toast { top: calc(var(--sa-t) + 220px); width: calc(100vw - 24px - var(--sa-l) - var(--sa-r)); font-size: 28px; }
+        .touch .toast { -webkit-line-clamp: 3; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .stick { transition: none; }
+        .menu, .settings, .reader { animation: none; }
+        .load-bar i { transition: none; }
+        .toast.out { transform: none; }
+        .meme-toast.out { transform: translateX(-50%) rotate(-2deg); }
+        .touch .meme-toast.out { transform: translateX(-50%) rotate(-1.5deg); }
+        .tx i { animation: none; }
+        .intro .reader-body p { transition: none; opacity: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="game" aria-label="Game view"></canvas>
+    <div id="ui">
+      <div id="touch" class="touch-layer" hidden>
+        <div id="stick" class="stick" aria-hidden="true"><span class="run-tag">Sprint</span><i class="knob"></i></div>
+        <button id="t-pause" class="tbtn t-pause" type="button" tabindex="-1" aria-label="Pause"><i aria-hidden="true"></i></button>
+        <button id="t-use" class="tbtn t-use" type="button" tabindex="-1">Use</button>
+        <button id="t-back" class="tbtn t-back" type="button" tabindex="-1" aria-label="Look back">Back</button>
+        <button id="t-light" class="tbtn t-light" type="button" tabindex="-1" aria-label="Flashlight" aria-pressed="false">Light</button>
+        <button id="t-drink" class="tbtn t-item t-drink" type="button" tabindex="-1" aria-label="Drink almond water" hidden><i class="ico ico-almond_water" aria-hidden="true"></i><span class="lbl" aria-hidden="true">Drink</span><span class="count" aria-hidden="true">0</span></button>
+        <button id="t-horn" class="tbtn t-item t-horn" type="button" tabindex="-1" aria-label="Airhorn" hidden><i class="ico ico-airhorn" aria-hidden="true"></i><span class="lbl" aria-hidden="true">Horn</span><span class="count" aria-hidden="true">0</span></button>
+      </div>
+      <div id="hud" hidden>
+        <div class="crosshair"></div>
+        <section id="objectives" class="objectives px-panel" aria-label="Objectives" hidden>
+          <div class="obj-head"><span>Objectives</span><b id="obj-count">0/0</b></div>
+          <ol id="obj-list" class="obj-list"></ol>
+        </section>
+        <div id="compass" class="compass px-panel" role="img" aria-label="Objective direction" hidden>
+          <span class="slot"><i class="ico ico-compass_arrow"></i></span>
+          <span id="compass-dist" class="dist">0 m</span>
+        </div>
+        <div id="hotbar" class="hotbar px-panel" aria-label="Inventory" hidden>
+          <div id="slot-almond" class="slot empty" role="img" aria-label="Almond water: 0"><span class="key" aria-hidden="true">1</span><i class="ico ico-almond_water"></i><span class="count" aria-hidden="true">0</span></div>
+          <div id="slot-airhorn" class="slot empty" role="img" aria-label="Airhorn: 0 charges"><span class="key" aria-hidden="true">G</span><i class="ico ico-airhorn"></i><span class="count" aria-hidden="true">0</span></div>
+        </div>
+        <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+        <div id="meme-toast" class="meme-toast out" aria-hidden="true"></div>
+        <div id="prompt" class="prompt px-panel" role="status" aria-live="polite" hidden></div>
+        <p id="party-live" class="sr-only" role="status" aria-live="polite"></p>
+        <div id="party" class="party" aria-hidden="true" hidden>
+          <div class="party-stack">
+            <p class="party-title"><span class="party-splash">SIGMA SIGMA BOY!</span><span id="party-letters"></span></p>
+            <p class="party-now">Now playing: Sigma Boy</p>
+            <div class="party-song">
+              <div class="party-xp"><i id="party-fill"></i></div>
+              <div class="party-meta"><span>Betsy &amp; Maria Yankovskaya</span><span id="party-time" class="time">0:00 / 0:35</span></div>
+            </div>
+          </div>
+        </div>
+        <section id="task" class="task px-panel" role="group" aria-labelledby="task-title" hidden>
+          <div class="task-head"><h3 id="task-title"></h3><span class="task-tag">Task</span></div>
+          <div id="task-body"></div>
+          <p id="task-msg" class="task-msg" role="status" aria-live="assertive"></p>
+          <p id="task-hint" class="task-hint"></p>
+        </section>
+      </div>
+
+      <section id="start" class="screen menu" aria-labelledby="start-title" hidden>
+        <div class="osd" aria-hidden="true">PLAY &#9654; <span id="osd-time">0:00:00</span></div>
+        <div class="block">
+          <p id="rotate-hint" class="rotate-hint px-panel touch-only"><span>Best played sideways. Rotate your phone for a wider view.</span><button id="btn-rotate-ok" class="btn" type="button" aria-label="Dismiss the rotate hint">OK</button></p>
+          <h1 id="start-title"><img id="logo" class="logo" src="./assets/gen/logo.png" alt="Level 0" width="456" height="104" /></h1>
+          <p class="sub">You noclipped out of reality. The lights hum, the carpet is damp, and somewhere down the hall someone is playing music.</p>
+          <div class="actions">
+            <button id="btn-start" class="btn primary" type="button">Start</button>
+            <button id="btn-start-settings" class="btn" type="button">Settings</button>
+          </div>
+          <div class="lineup" aria-label="Who is in here with you">
+            <figure><img src="./assets/img/kanye.webp" alt="Kanye cutout" width="87" height="92" /><figcaption>Kanye</figcaption></figure>
+            <figure><img src="./assets/img/epstein.webp" alt="Epstein cutout" width="86" height="92" /><figcaption>Epstein</figcaption></figure>
+            <figure><img src="./assets/img/trump.webp" alt="Trump cutout" width="85" height="92" /><figcaption>Trump</figcaption></figure>
+          </div>
+          <p class="keys kb-only"><span><kbd>WASD</kbd>move</span> <span><kbd>Shift</kbd>sprint</span> <span><kbd>E</kbd>use</span> <span><kbd>1</kbd>drink</span> <span><kbd>G</kbd>airhorn</span> <span><kbd>Q</kbd>look back</span> <span><kbd>F</kbd>flashlight</span> <span><kbd>Esc</kbd>pause</span></p>
+          <p class="keys touch-only">Left thumb moves, push it to the edge to sprint. Drag on the right to look. <kbd>Use</kbd> opens, answers and holds.</p>
+        </div>
+      </section>
+
+      <section id="pause" class="screen menu dim" aria-labelledby="pause-title" hidden>
+        <div class="block">
+          <h2 id="pause-title">Paused</h2>
+          <p class="sub">The corridor will wait. Probably.</p>
+          <div class="actions">
+            <button id="btn-resume" class="btn primary" type="button">Resume</button>
+            <button id="btn-pause-settings" class="btn" type="button">Settings</button>
+            <button id="btn-restart" class="btn" type="button">Restart</button>
+          </div>
+          <p class="keys kb-only"><span><kbd>E</kbd>use</span> <span><kbd>1</kbd>drink</span> <span><kbd>G</kbd>airhorn</span> <span><kbd>Q</kbd>look back</span> <span><kbd>F</kbd>flashlight</span></p>
+          <p class="keys touch-only"><kbd>Use</kbd> doors, phones, tasks. <kbd>Back</kbd> look behind. <kbd>Light</kbd> flashlight.</p>
+        </div>
+      </section>
+
+      <section id="death" class="screen menu dim death" aria-labelledby="death-line" hidden>
+        <img id="death-face" class="death-face" alt="" hidden />
+        <div class="block">
+          <div class="end-head"><i class="ico x2 ico-skull" aria-hidden="true"></i><span class="sr-only">Caught</span></div>
+          <p id="death-line" class="line" role="alert"></p>
+          <dl class="stats px-panel">
+            <dt>Distance</dt><dd id="death-distance">0 m</dd>
+            <dt>Escapes</dt><dd id="death-escapes">0</dd>
+            <dt>Best</dt><dd id="death-best">0 m</dd>
+          </dl>
+          <div class="actions">
+            <button id="btn-again" class="btn primary" type="button">Go again</button>
+          </div>
+          <p class="hint kb-only">Click anywhere, <kbd>R</kbd> or <kbd>Space</kbd></p>
+          <p class="hint touch-only">Tap anywhere to go again</p>
+        </div>
+      </section>
+
+      <section id="win" class="screen menu dim win" aria-labelledby="win-title" hidden>
+        <div class="block">
+          <div class="end-head"><i class="ico x2 ico-trophy" aria-hidden="true"></i></div>
+          <h2 id="win-title">You got out</h2>
+          <p id="win-line" class="end-sub"></p>
+          <dl class="stats wide px-panel">
+            <dt>Time</dt><dd id="win-time">0:00</dd>
+            <dt>Distance</dt><dd id="win-distance">0 m</dd>
+            <dt>Escapes</dt><dd id="win-escapes">0</dd>
+            <dt>Best time</dt><dd id="win-best">0:00</dd>
+          </dl>
+          <p id="win-tapes" class="end-sub"></p>
+          <div class="actions">
+            <button id="btn-win-again" class="btn primary" type="button">Play again</button>
+          </div>
+          <p class="hint kb-only"><kbd>R</kbd> or <kbd>Space</kbd></p>
+        </div>
+      </section>
+
+      <section id="lore" class="screen reader" role="dialog" aria-modal="true" aria-labelledby="lore-title" hidden>
+        <div class="reader-card px-panel">
+          <div class="reader-head"><i class="ico ico-note" aria-hidden="true"></i><h2 id="lore-title"></h2></div>
+          <div id="lore-body" class="reader-body" tabindex="0"></div>
+          <p class="reader-foot kb-only"><kbd>E</kbd> <kbd>Esc</kbd> or click to close</p>
+          <p class="reader-foot touch-only">Tap to close</p>
+        </div>
+      </section>
+
+      <section id="intro" class="screen reader intro" role="dialog" aria-modal="true" aria-labelledby="intro-title" hidden>
+        <div class="reader-card px-panel">
+          <div class="tx"><i aria-hidden="true"></i><span>Live // CH 0</span></div>
+          <div class="reader-head"><i class="ico ico-phone" aria-hidden="true"></i><h2 id="intro-title"></h2></div>
+          <div id="intro-body" class="reader-body" tabindex="0"></div>
+          <p class="reader-foot kb-only"><kbd>E</kbd> <kbd>Space</kbd> or click to acknowledge</p>
+          <p class="reader-foot touch-only">Tap to acknowledge</p>
+        </div>
+      </section>
+
+      <section id="settings" class="screen settings" role="dialog" aria-modal="true" aria-labelledby="settings-title" hidden>
+        <div class="sheet px-panel">
+          <div class="sheet-head">
+            <h2 id="settings-title">Settings</h2>
+          </div>
+          <form id="settings-form" class="cols" onsubmit="return false"></form>
+          <div class="sheet-foot">
+            <button id="btn-reset" class="link" type="button">Reset to defaults</button>
+            <button id="btn-back" class="btn primary" type="button">Back</button>
+          </div>
+        </div>
+      </section>
+
+      <div id="loading" class="screen loading" role="progressbar" aria-label="Loading" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="load-inner">
+          <div id="load-label" class="load-label">Loading</div>
+          <div class="load-bar"><i id="load-fill"></i></div>
+        </div>
+      </div>
+    </div>
+    <div id="fatal" role="alert" hidden></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

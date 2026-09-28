@@ -1,0 +1,2670 @@
+{
+  "version": 1,
+  "targetLufs": -17,
+  "maxTruePeak": -1.5,
+  "characters": {
+    "kanye": {
+      "image": "img/kanye.webp",
+      "imageSource": "cover2-1.webp",
+      "aspect": 0.9492,
+      "heightM": 2.35,
+      "audio": "audio/kanye.mp3",
+      "audioSource": "Kanye West - All Of The Lights ft. Rihanna, Kid Cudi.mp3",
+      "sourceStart": 68.7,
+      "sourceEnd": 112.683,
+      "loopStart": 30.4142,
+      "loopEnd": 43.9234,
+      "entranceDelay": 0.25,
+      "gainDb": 1.66,
+      "playbackGainDb": 2,
+      "lufs": -9,
+      "truePeak": -1.8,
+      "processing": "mono downmix; loudnorm dynamic-mode leveller (I -16, LRA 4); HPF 28 Hz; bass shelf +26 dB @ 60 Hz; peak +10 dB @ 110 Hz; LPF 3.8 kHz; +14 dB into hard clip; acrusher 5-bit log, 5x sample hold, mix 0.9; +6 dB into hard clip at 0.9; LPF 4.5 kHz; swr resample 11025 Hz; static gain 1.66 dB (-9 LUFS in file, playback trim 2 dB to -7 LUFS); lookahead limiter ceiling -5.6 dBFS; libmp3lame 24k CBR mono 11025 Hz",
+      "imageSourceSize": {
+        "w": 810,
+        "h": 580,
+        "bytes": 351734
+      },
+      "imageCrop": [
+        140,
+        0,
+        690,
+        580
+      ],
+      "imageSubjectBox": [
+        140,
+        0,
+        690,
+        580
+      ],
+      "imageSize": {
+        "w": 486,
+        "h": 512,
+        "bytes": 12234
+      },
+      "duration": 43.9834,
+      "onsetAt": 0.0008,
+      "onsetThreshold": 0.05,
+      "limiterCeilingDb": -5.6,
+      "samplePeak": -1.8,
+      "lra": 1.7,
+      "rate": 11025,
+      "bitrate": "24k",
+      "bytes": 132492,
+      "analysis": {
+        "sourceCodec": "aac",
+        "sourceRate": 44100,
+        "sourceChannels": 2,
+        "sourceDuration": 327.703,
+        "sourceBytes": 5304286,
+        "anchorOnset": 68.7427,
+        "attackOnset": 68.7476,
+        "bpm": 142.145,
+        "barSec": 1.688417,
+        "loopBars": [
+          18,
+          26
+        ],
+        "loopRefineMs": 1.814,
+        "loopRefineCorr": 0.673,
+        "loopSimilarity": {
+          "post": 0.377,
+          "pre": 0.497
+        },
+        "barRmsDb": [
+          -19.7,
+          -26.4,
+          -25.9,
+          -25.7,
+          -26.2,
+          -25.9,
+          -22,
+          -18.6,
+          -18.7,
+          -19.2,
+          -18.5,
+          -18.5,
+          -18.5,
+          -18.8,
+          -18.8,
+          -19.1,
+          -10.7,
+          -10.3,
+          -10.3,
+          -10.6,
+          -10.1,
+          -10.4,
+          -10.1,
+          -10.3,
+          -10,
+          -10.1,
+          -10,
+          -10,
+          -9.9,
+          -10.1,
+          -10,
+          -10.1
+        ],
+        "decodeOffsetMs": 0,
+        "decodeAlignCorr": 0.9766,
+        "decodedSamples": 484917,
+        "seam": {
+          "jump": 0.08677,
+          "p99Step": 0.38759,
+          "ratio": 0.224
+        },
+        "spectrum": {
+          "centroidHz": 373.3,
+          "lt300": 0.7147,
+          "b300_3500": 0.2794,
+          "b3500_6000": 0.0059,
+          "gt6000": 0,
+          "crestDb": 5.56,
+          "rmsDb": -7.38
+        },
+        "sourceSpectrum": {
+          "centroidHz": 417.8,
+          "lt300": 0.7421,
+          "b300_3500": 0.2402,
+          "b3500_6000": 0.0123,
+          "gt6000": 0.0054,
+          "crestDb": 10.69,
+          "rmsDb": -13
+        },
+        "preGainLufs": -3.56,
+        "preGainTruePeak": 2.1,
+        "limiter": {
+          "windowsOver0_5dB": 100,
+          "windowsOver1dB": 100,
+          "maxGrDb": 9.36
+        }
+      }
+    },
+    "epstein": {
+      "image": "img/epstein.webp",
+      "imageSource": "images (6).jpeg",
+      "aspect": 0.9316,
+      "heightM": 2.35,
+      "audio": "audio/epstein.mp3",
+      "audioSource": "Jeffrey Epstein Edit Lil Pump - Boss X Hunnid dolla.mp3",
+      "sourceStart": 1.5,
+      "sourceEnd": 50.078,
+      "loopStart": 0.5176,
+      "loopEnd": 48.5176,
+      "entranceDelay": 0.35,
+      "gainDb": 0.38,
+      "playbackGainDb": 0.2,
+      "lufs": -10.2,
+      "truePeak": -0.8,
+      "processing": "mono downmix; HPF 30 Hz; bass shelf +4 dB @ 70 Hz; +4 dB @ 900 Hz; LPF 5.5 kHz; acrusher 8-bit lin, 3x sample hold, mix 0.5; +7 dB into tanh soft clip, -2 dB; swr resample 16000 Hz; static gain 0.38 dB (-10.2 LUFS in file, playback trim 0.2 dB to -10 LUFS); lookahead limiter ceiling -1.3 dBFS; libmp3lame 40k CBR mono 16000 Hz",
+      "imageSourceSize": {
+        "w": 678,
+        "h": 452,
+        "bytes": 20145
+      },
+      "imageCrop": [
+        205,
+        0,
+        600,
+        420
+      ],
+      "imageSubjectBox": [
+        205,
+        13,
+        584,
+        420
+      ],
+      "imageSize": {
+        "w": 477,
+        "h": 512,
+        "bytes": 16348
+      },
+      "duration": 48.5776,
+      "onsetAt": 0.0124,
+      "onsetThreshold": 0.05,
+      "limiterCeilingDb": -1.3,
+      "samplePeak": -0.9,
+      "lra": 1.6,
+      "rate": 16000,
+      "bitrate": "40k",
+      "bytes": 243540,
+      "analysis": {
+        "sourceCodec": "aac",
+        "sourceRate": 44100,
+        "sourceChannels": 2,
+        "sourceDuration": 89.466,
+        "sourceBytes": 1448674,
+        "anchorOnset": 2.0376,
+        "attackOnset": 2.0314,
+        "bpm": 120,
+        "barSec": 2,
+        "loopBars": [
+          0,
+          24
+        ],
+        "loopRefineMs": 0,
+        "loopRefineCorr": 0.946,
+        "loopSimilarity": {
+          "post": 0.826,
+          "pre": -0.154
+        },
+        "barRmsDb": [
+          -5.4,
+          -5.2,
+          -5.3,
+          -5.1,
+          -5.3,
+          -5.2,
+          -5.3,
+          -6.6,
+          -5.2,
+          -4.2,
+          -5.2,
+          -4.4,
+          -5.4,
+          -4.2,
+          -5.6,
+          -5.2,
+          -5.7,
+          -4.2,
+          -5.3,
+          -4.5,
+          -5.3,
+          -3.7,
+          -5.2,
+          -13.5,
+          -5.4,
+          -5.2,
+          -5.2,
+          -5.1,
+          -5.3
+        ],
+        "decodeOffsetMs": 0,
+        "decodeAlignCorr": 0.999,
+        "decodedSamples": 777242,
+        "seam": {
+          "jump": 0.00983,
+          "p99Step": 0.29532,
+          "ratio": 0.033
+        },
+        "spectrum": {
+          "centroidHz": 194.7,
+          "lt300": 0.8378,
+          "b300_3500": 0.1602,
+          "b3500_6000": 0.002,
+          "gt6000": 0.0001,
+          "crestDb": 6.19,
+          "rmsDb": -7.07
+        },
+        "sourceSpectrum": {
+          "centroidHz": 216.4,
+          "lt300": 0.8294,
+          "b300_3500": 0.166,
+          "b3500_6000": 0.0035,
+          "gt6000": 0.0012,
+          "crestDb": 9.07,
+          "rmsDb": -5.75
+        },
+        "preGainLufs": -10.38,
+        "preGainTruePeak": -2.04,
+        "limiter": {
+          "windowsOver0_5dB": 0,
+          "windowsOver1dB": 0,
+          "maxGrDb": 0
+        }
+      }
+    },
+    "trump": {
+      "image": "img/trump.webp",
+      "imageSource": "Donald-Trump-Mugshot-Depth-Of-Field-Culture-1621335357.webp",
+      "aspect": 0.9219,
+      "heightM": 2.35,
+      "audio": "audio/trump.mp3",
+      "audioSource": "Donald Trump please save me 🥺🙏 - Meme Asylum.mp3",
+      "sourceStart": 0.075,
+      "sourceEnd": 35.44,
+      "loopStart": 0,
+      "loopEnd": 35.815,
+      "entranceDelay": 0.15,
+      "gainDb": -0.95,
+      "playbackGainDb": 7.1,
+      "lufs": -19.1,
+      "truePeak": -1.5,
+      "processing": "mono downmix; edge silence trimmed at -60 dBFS; 3 ms fade-in / 20 ms fade-out; 0.45 s silent gap before the loop repeats; no filtering; static gain -0.95 dB (-19.1 LUFS in file, playback trim 7.1 dB to -12 LUFS); no limiter; libmp3lame 80k CBR mono 48000 Hz",
+      "imageSourceSize": {
+        "w": 1500,
+        "h": 1500,
+        "bytes": 120162
+      },
+      "imageCrop": [
+        400,
+        200,
+        1500,
+        1420
+      ],
+      "imageSubjectBox": [
+        400,
+        227,
+        1500,
+        1420
+      ],
+      "imageSize": {
+        "w": 472,
+        "h": 512,
+        "bytes": 12944
+      },
+      "duration": 35.815,
+      "onsetAt": 0.0075,
+      "onsetThreshold": 0.05,
+      "limiterCeilingDb": null,
+      "samplePeak": -1.5,
+      "lra": 6.2,
+      "rate": 48000,
+      "bitrate": "80k",
+      "bytes": 358800,
+      "analysis": {
+        "sourceCodec": "mp3",
+        "sourceRate": 48000,
+        "sourceChannels": 2,
+        "sourceDuration": 35.64,
+        "sourceBytes": 1425715,
+        "trimThresholdDb": -60,
+        "contentStart": 0.08,
+        "contentEnd": 35.43,
+        "decodeOffsetMs": 0,
+        "decodeAlignCorr": 0.9998,
+        "decodedSamples": 1719120,
+        "seam": {
+          "jump": 0,
+          "p99Step": 0.00679,
+          "ratio": 0.001
+        },
+        "spectrum": {
+          "centroidHz": 295.7,
+          "lt300": 0.8306,
+          "b300_3500": 0.1607,
+          "b3500_6000": 0.0065,
+          "gt6000": 0.0021,
+          "crestDb": 15.35,
+          "rmsDb": -16.85
+        },
+        "sourceSpectrum": {
+          "centroidHz": 295.1,
+          "lt300": 0.8315,
+          "b300_3500": 0.1598,
+          "b3500_6000": 0.0066,
+          "gt6000": 0.0021,
+          "crestDb": 15.31,
+          "rmsDb": -15.43
+        },
+        "preGainLufs": -17.89,
+        "preGainTruePeak": -0.1,
+        "limiter": "off"
+      },
+      "audioVariants": [
+        "trump",
+        "trump_dogs",
+        "trump_china"
+      ]
+    }
+  },
+  "clips": {
+    "trump_dogs": {
+      "audio": "audio/trump_dogs.mp3",
+      "audioSource": "Trump They're eating the dogs, the cats.mp3",
+      "sourceStart": 0.045,
+      "sourceEnd": 14.39,
+      "loopStart": 0,
+      "loopEnd": 14.795,
+      "duration": 14.795,
+      "onsetAt": 0.1133,
+      "onsetThreshold": 0.05,
+      "entranceDelay": 0.15,
+      "gainDb": 1.54,
+      "playbackGainDb": 10.2,
+      "limiterCeilingDb": null,
+      "lufs": -22.2,
+      "truePeak": -1.7,
+      "samplePeak": -1.7,
+      "lra": 2.8,
+      "rate": 48000,
+      "bitrate": "80k",
+      "bytes": 148560,
+      "processing": "mono downmix; edge silence trimmed at -60 dBFS; 3 ms fade-in / 20 ms fade-out; 0.45 s gap before the loop repeats; no filtering; static gain 1.54 dB (-22.2 LUFS in file, playback trim 10.2 dB to -12 LUFS); no limiter; libmp3lame 80k CBR mono 48000 Hz",
+      "analysis": {
+        "sourceCodec": "mp3",
+        "sourceRate": 44100,
+        "sourceChannels": 2,
+        "sourceDuration": 14.443,
+        "sourceBytes": 348088,
+        "trimThresholdDb": -60,
+        "contentStart": 0.05,
+        "contentEnd": 14.38,
+        "decodeOffsetMs": 0,
+        "decodeAlignCorr": 0.9964,
+        "decodedSamples": 710160,
+        "seam": {
+          "jump": 0,
+          "p99Step": 0.02142,
+          "ratio": 0
+        },
+        "spectrum": {
+          "centroidHz": 827.5,
+          "lt300": 0.2198,
+          "b300_3500": 0.7516,
+          "b3500_6000": 0.0168,
+          "gt6000": 0.0118,
+          "crestDb": 20.88,
+          "rmsDb": -22.61
+        },
+        "sourceSpectrum": {
+          "centroidHz": 815,
+          "lt300": 0.2234,
+          "b300_3500": 0.7494,
+          "b3500_6000": 0.0163,
+          "gt6000": 0.0109,
+          "crestDb": 20.82,
+          "rmsDb": -23.61
+        },
+        "preGainLufs": -23.53,
+        "preGainTruePeak": -2.79,
+        "limiter": "off"
+      }
+    },
+    "trump_china": {
+      "audio": "audio/trump_china.mp3",
+      "audioSource": "Donald Trump Says China.mp3",
+      "sourceStart": 77.725,
+      "sourceEnd": 107.975,
+      "loopStart": 0,
+      "loopEnd": 30.7,
+      "duration": 30.7,
+      "onsetAt": 0.6139,
+      "onsetThreshold": 0.05,
+      "entranceDelay": 0.15,
+      "gainDb": -4.16,
+      "playbackGainDb": 7.8,
+      "limiterCeilingDb": null,
+      "lufs": -19.8,
+      "truePeak": -1.6,
+      "samplePeak": -1.6,
+      "lra": 2.6,
+      "rate": 48000,
+      "bitrate": "80k",
+      "bytes": 307680,
+      "processing": "mono downmix; source window 77.725-107.975 s (densest speech between silence gaps); 3 ms fade-in / 20 ms fade-out; 0.45 s gap before the loop repeats; no filtering; static gain -4.16 dB (-19.8 LUFS in file, playback trim 7.8 dB to -12 LUFS); no limiter; libmp3lame 80k CBR mono 48000 Hz",
+      "analysis": {
+        "sourceCodec": "mp3",
+        "sourceRate": 44100,
+        "sourceChannels": 2,
+        "sourceDuration": 180.048,
+        "sourceBytes": 4322879,
+        "window": [
+          77.725,
+          107.975
+        ],
+        "decodeOffsetMs": 0,
+        "decodeAlignCorr": 0.9989,
+        "decodedSamples": 1473600,
+        "seam": {
+          "jump": 0.00003,
+          "p99Step": 0.03319,
+          "ratio": 0.001
+        },
+        "spectrum": {
+          "centroidHz": 758.6,
+          "lt300": 0.1821,
+          "b300_3500": 0.783,
+          "b3500_6000": 0.0274,
+          "gt6000": 0.0076,
+          "crestDb": 18.4,
+          "rmsDb": -20.05
+        },
+        "sourceSpectrum": {
+          "centroidHz": 815.8,
+          "lt300": 0.134,
+          "b300_3500": 0.8348,
+          "b3500_6000": 0.0219,
+          "gt6000": 0.0093,
+          "crestDb": 19.38,
+          "rmsDb": -16.51
+        },
+        "preGainLufs": -15.26,
+        "preGainTruePeak": 2.81,
+        "limiter": "off"
+      }
+    }
+  },
+  "sfx": {
+    "vine_boom": {
+      "file": "sfx/vine_boom.mp3",
+      "duration": 1.179,
+      "categories": [
+        "reveal",
+        "poster"
+      ],
+      "gainDb": 6.4,
+      "lufs": -10,
+      "truePeak": -1.4,
+      "playbackGainDb": 1,
+      "bytes": 10080,
+      "source": "myinstants: \"VINE BOOM SOUND\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/vine-boom-sound-70972/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/vine-boom.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260102015615id_/https://www.myinstants.com/media/sounds/vine-boom.mp3",
+      "views": 10972324,
+      "sourceDuration": 1.255,
+      "window": [
+        0,
+        1.179
+      ],
+      "trimmed": false
+    },
+    "among_us_reveal": {
+      "file": "sfx/among_us_reveal.mp3",
+      "duration": 4,
+      "categories": [
+        "reveal",
+        "meme:sus"
+      ],
+      "gainDb": 21.6,
+      "lufs": -12.1,
+      "truePeak": -1.3,
+      "playbackGainDb": 3.1,
+      "bytes": 32832,
+      "source": "myinstants: \"Among Us role reveal sound\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/among-us-role-reveal-sound-34956/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/among-us-role-reveal-sound.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260909165958id_/https://www.myinstants.com/media/sounds/among-us-role-reveal-sound.mp3",
+      "views": 3035041,
+      "sourceDuration": 4.572,
+      "window": [
+        0,
+        4
+      ],
+      "trimmed": true
+    },
+    "mgs_alert": {
+      "file": "sfx/mgs_alert.mp3",
+      "duration": 1.077,
+      "categories": [
+        "reveal"
+      ],
+      "gainDb": 12.3,
+      "lufs": -12,
+      "truePeak": -1.4,
+      "playbackGainDb": 3,
+      "bytes": 9216,
+      "source": "myinstants: \"Metal Gear Solid Alert\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/metal-gear-solid-alert/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/tindeck_1.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260902220842id_/https://www.myinstants.com/media/sounds/tindeck_1.mp3",
+      "views": 1355110,
+      "sourceDuration": 1.567,
+      "window": [
+        0,
+        1.077
+      ],
+      "trimmed": false
+    },
+    "dun_dun_dun": {
+      "file": "sfx/dun_dun_dun.mp3",
+      "duration": 4,
+      "categories": [
+        "reveal"
+      ],
+      "gainDb": 9.3,
+      "lufs": -10.1,
+      "truePeak": -0.8,
+      "playbackGainDb": 1.1,
+      "bytes": 32832,
+      "source": "myinstants: \"dun dun dunnnnnnnn\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/dun-dun-dunnnnnnnn-68584/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/dun-dun-dun-sound-effect-brass_8nFBccR.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260902035331id_/https://www.myinstants.com/media/sounds/dun-dun-dun-sound-effect-brass_8nFBccR.mp3",
+      "views": 1506263,
+      "sourceDuration": 5.12,
+      "window": [
+        0,
+        4
+      ],
+      "trimmed": true
+    },
+    "roblox_oof": {
+      "file": "sfx/roblox_oof.mp3",
+      "duration": 0.34,
+      "categories": [
+        "hit"
+      ],
+      "gainDb": 13.38,
+      "lufs": -9.41,
+      "truePeak": -1.9,
+      "playbackGainDb": 0.41,
+      "bytes": 3456,
+      "source": "myinstants: \"ROBLOX oof\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/roblox-oof/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260821141331id_/https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3",
+      "views": 2183367,
+      "sourceDuration": 1,
+      "window": [
+        0,
+        0.34
+      ],
+      "trimmed": false
+    },
+    "metal_pipe": {
+      "file": "sfx/metal_pipe.mp3",
+      "duration": 3,
+      "categories": [
+        "hit",
+        "task:vendingStuck"
+      ],
+      "gainDb": 10.7,
+      "lufs": -10.8,
+      "truePeak": -1.2,
+      "playbackGainDb": 1.8,
+      "bytes": 24768,
+      "source": "myinstants: \"jixaw metal pipe falling sound\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/jixaw-metal-pipe-falling-sound-28270/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/jixaw-metal-pipe-falling-sound.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260806073233id_/https://www.myinstants.com/media/sounds/jixaw-metal-pipe-falling-sound.mp3",
+      "views": 948979,
+      "sourceDuration": 3.173,
+      "window": [
+        0,
+        3
+      ],
+      "trimmed": true
+    },
+    "emotional_damage": {
+      "file": "sfx/emotional_damage.mp3",
+      "duration": 2.58,
+      "categories": [
+        "hit"
+      ],
+      "gainDb": -4.8,
+      "lufs": -9.4,
+      "truePeak": -1.6,
+      "playbackGainDb": 0.4,
+      "bytes": 21312,
+      "source": "myinstants: \"Emotional_Damage\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/emotional-damage-99808/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/emotional-damage_svaNMfN.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260223121840id_/https://www.myinstants.com/media/sounds/emotional-damage_svaNMfN.mp3",
+      "views": 116865,
+      "sourceDuration": 2.612,
+      "window": [
+        0,
+        2.58
+      ],
+      "trimmed": false
+    },
+    "minecraft_hurt": {
+      "file": "sfx/minecraft_hurt.mp3",
+      "duration": 0.345,
+      "categories": [
+        "hit"
+      ],
+      "gainDb": 17.5,
+      "lufs": -11.03,
+      "truePeak": -1.4,
+      "playbackGainDb": 2.03,
+      "bytes": 3456,
+      "source": "myinstants: \"Minecraft Hurt\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/minecraft-hurt/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/classic_hurt.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260524190046id_/https://www.myinstants.com/media/sounds/classic_hurt.mp3",
+      "views": 704522,
+      "sourceDuration": 0.366,
+      "window": [
+        0,
+        0.345
+      ],
+      "trimmed": false
+    },
+    "bonk": {
+      "file": "sfx/bonk.mp3",
+      "duration": 0.425,
+      "categories": [
+        "hit",
+        "task:vendingStuck",
+        "meme:doge"
+      ],
+      "gainDb": 11.1,
+      "lufs": -9.5,
+      "truePeak": -1.6,
+      "playbackGainDb": 0.5,
+      "bytes": 4032,
+      "source": "myinstants: \"Doge bonk\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/doge-bonk-84044/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/bonk_BEtiM8g.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260718133538id_/https://www.myinstants.com/media/sounds/bonk_BEtiM8g.mp3",
+      "views": 444656,
+      "sourceDuration": 2.113,
+      "window": [
+        0,
+        0.425
+      ],
+      "trimmed": false
+    },
+    "gta_wasted": {
+      "file": "sfx/gta_wasted.mp3",
+      "duration": 6,
+      "categories": [
+        "death"
+      ],
+      "gainDb": 16.9,
+      "lufs": -13,
+      "truePeak": -1.3,
+      "playbackGainDb": 4,
+      "bytes": 48672,
+      "source": "myinstants: \"GTA V - Wasted\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/gta-v-wasted/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/gta-v-death-sound-effect-102.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260830103503id_/https://www.myinstants.com/media/sounds/gta-v-death-sound-effect-102.mp3",
+      "views": 591689,
+      "sourceDuration": 7.758,
+      "window": [
+        0,
+        6
+      ],
+      "trimmed": true
+    },
+    "mission_failed": {
+      "file": "sfx/mission_failed.mp3",
+      "duration": 3.043,
+      "categories": [
+        "death"
+      ],
+      "gainDb": 4.9,
+      "lufs": -9.9,
+      "truePeak": -1.4,
+      "playbackGainDb": 0.9,
+      "bytes": 25056,
+      "source": "myinstants: \"mission failed, we get em next time\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/mission-failed-we-get-em-next-time-6737/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/mission-failed-well-get-em-next-time-sound-effect-zxhixnbk.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260318021628id_/https://www.myinstants.com/media/sounds/mission-failed-well-get-em-next-time-sound-effect-zxhixnbk.mp3",
+      "views": 52360,
+      "sourceDuration": 3.344,
+      "window": [
+        0,
+        3.042
+      ],
+      "trimmed": false
+    },
+    "coffin_dance": {
+      "file": "sfx/coffin_dance.mp3",
+      "duration": 5.829,
+      "categories": [
+        "death"
+      ],
+      "gainDb": 4,
+      "lufs": -11.1,
+      "truePeak": -2.2,
+      "playbackGainDb": 2.1,
+      "bytes": 47232,
+      "source": "myinstants: \"Coffin Dance Meme\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/coffin-dance-meme-31063/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/y2mate-mp3cut_sRzY6rh.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260724185901id_/https://www.myinstants.com/media/sounds/y2mate-mp3cut_sRzY6rh.mp3",
+      "views": 392659,
+      "sourceDuration": 5.839,
+      "window": [
+        0,
+        5.829
+      ],
+      "trimmed": false
+    },
+    "xp_shutdown": {
+      "file": "sfx/xp_shutdown.mp3",
+      "duration": 2.885,
+      "categories": [
+        "death"
+      ],
+      "gainDb": 17.3,
+      "lufs": -10.4,
+      "truePeak": -1.8,
+      "playbackGainDb": 1.4,
+      "bytes": 23904,
+      "source": "myinstants: \"windows xp shutdown\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/windows-xp-shutdown/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/preview_4.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260830103837id_/https://www.myinstants.com/media/sounds/preview_4.mp3",
+      "views": 746062,
+      "sourceDuration": 3.24,
+      "window": [
+        0,
+        2.885
+      ],
+      "trimmed": false
+    },
+    "sheesh": {
+      "file": "sfx/sheesh.mp3",
+      "duration": 1.597,
+      "categories": [
+        "collect"
+      ],
+      "gainDb": 33.8,
+      "lufs": -12.3,
+      "truePeak": -1,
+      "playbackGainDb": 3.3,
+      "bytes": 13536,
+      "source": "myinstants: \"Sheesh\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/sheesh/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/klaysheesh.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260107115125id_/https://www.myinstants.com/media/sounds/klaysheesh.mp3",
+      "views": 16299,
+      "sourceDuration": 1.62,
+      "window": [
+        0,
+        1.597
+      ],
+      "trimmed": false
+    },
+    "anime_wow": {
+      "file": "sfx/anime_wow.mp3",
+      "duration": 3,
+      "categories": [
+        "collect"
+      ],
+      "gainDb": 13.8,
+      "lufs": -10.1,
+      "truePeak": -1.4,
+      "playbackGainDb": 1.1,
+      "bytes": 24768,
+      "source": "myinstants: \"Anime Wow\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/anime-wow/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/anime-wow-sound-effect.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260830083405id_/https://www.myinstants.com/media/sounds/anime-wow-sound-effect.mp3",
+      "views": 4270243,
+      "sourceDuration": 4.18,
+      "window": [
+        0,
+        3
+      ],
+      "trimmed": true
+    },
+    "yippee": {
+      "file": "sfx/yippee.mp3",
+      "duration": 0.844,
+      "categories": [
+        "collect"
+      ],
+      "gainDb": 5.2,
+      "lufs": -9.3,
+      "truePeak": -1.7,
+      "playbackGainDb": 0.3,
+      "bytes": 7488,
+      "source": "myinstants: \"yippee tbh\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/yippee-tbh-93589/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/yippee-tbh.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260720212818id_/https://www.myinstants.com/media/sounds/yippee-tbh.mp3",
+      "views": 447396,
+      "sourceDuration": 0.981,
+      "window": [
+        0,
+        0.844
+      ],
+      "trimmed": false
+    },
+    "zelda_item": {
+      "file": "sfx/zelda_item.mp3",
+      "duration": 2.452,
+      "categories": [
+        "collect"
+      ],
+      "gainDb": 10.3,
+      "lufs": -11.1,
+      "truePeak": -1.4,
+      "playbackGainDb": 2.1,
+      "bytes": 20448,
+      "source": "myinstants: \"Zelda - Item Get\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/zelda-item-get/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/139-item-catch.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260809163556id_/https://www.myinstants.com/media/sounds/139-item-catch.mp3",
+      "views": 154831,
+      "sourceDuration": 5.973,
+      "window": [
+        0,
+        2.452
+      ],
+      "trimmed": false
+    },
+    "mission_passed": {
+      "file": "sfx/mission_passed.mp3",
+      "duration": 6.589,
+      "categories": [
+        "win"
+      ],
+      "gainDb": 22.8,
+      "lufs": -10.4,
+      "truePeak": -1.3,
+      "playbackGainDb": 1.4,
+      "bytes": 53568,
+      "source": "myinstants: \"GTA San Andreas Mission Passed\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/gta-san-andreas-mission-passed/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/gta-san-andreas-mission-passed.mp3",
+      "archiveUrl": "https://web.archive.org/web/20251001034641id_/https://www.myinstants.com/media/sounds/gta-san-andreas-mission-passed.mp3",
+      "views": 586,
+      "sourceDuration": 7.012,
+      "window": [
+        0,
+        6.589
+      ],
+      "trimmed": false
+    },
+    "victory_royale": {
+      "file": "sfx/victory_royale.mp3",
+      "duration": 4.733,
+      "categories": [
+        "win"
+      ],
+      "gainDb": 12.6,
+      "lufs": -11.4,
+      "truePeak": -1.2,
+      "playbackGainDb": 2.4,
+      "bytes": 38592,
+      "source": "myinstants: \"Victory Royale\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/victory-royale-35710/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/1-victory-royale-sound-effect-fortnite-battle-royale.mp3",
+      "archiveUrl": "https://web.archive.org/web/20200909093841id_/https://www.myinstants.com/media/sounds/1-victory-royale-sound-effect-fortnite-battle-royale.mp3",
+      "views": 4744,
+      "sourceDuration": 4.82,
+      "window": [
+        0,
+        4.733
+      ],
+      "trimmed": false
+    },
+    "ff_fanfare": {
+      "file": "sfx/ff_fanfare.mp3",
+      "duration": 8,
+      "categories": [
+        "win"
+      ],
+      "gainDb": 13.5,
+      "lufs": -10.2,
+      "truePeak": -1,
+      "playbackGainDb": 1.2,
+      "bytes": 64800,
+      "source": "myinstants: \"Final Fantasy Victory Fanfare\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/final-fantasy-victory-fanfare/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/final-fantasy-vii-victory-fanfare-1.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260710155303id_/https://www.myinstants.com/media/sounds/final-fantasy-vii-victory-fanfare-1.mp3",
+      "views": 120268,
+      "sourceDuration": 9.993,
+      "window": [
+        0,
+        8
+      ],
+      "trimmed": true
+    },
+    "rizz": {
+      "file": "sfx/rizz.mp3",
+      "duration": 1.535,
+      "categories": [
+        "escape"
+      ],
+      "gainDb": 10.4,
+      "lufs": -11.4,
+      "truePeak": -1.8,
+      "playbackGainDb": 2.4,
+      "bytes": 12960,
+      "source": "myinstants: \"rizz sound effect\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/rizz-sound-effect-54189/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/rizz-sound-effect.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260826183941id_/https://www.myinstants.com/media/sounds/rizz-sound-effect.mp3",
+      "views": 2383814,
+      "sourceDuration": 1.933,
+      "window": [
+        0,
+        1.535
+      ],
+      "trimmed": false
+    },
+    "erm_sigma": {
+      "file": "sfx/erm_sigma.mp3",
+      "duration": 1.395,
+      "categories": [
+        "escape",
+        "meme:prime"
+      ],
+      "gainDb": 13.4,
+      "lufs": -13.3,
+      "truePeak": -1.8,
+      "playbackGainDb": 4.3,
+      "bytes": 11808,
+      "source": "myinstants: \"erm what the sigma\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/erm-what-the-sigma-51754/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/erm-what-the-sigma_su7GnzC.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260906062416id_/https://www.myinstants.com/media/sounds/erm-what-the-sigma_su7GnzC.mp3",
+      "views": 382375,
+      "sourceDuration": 1.395,
+      "window": [
+        0,
+        1.395
+      ],
+      "trimmed": false
+    },
+    "why_running": {
+      "file": "sfx/why_running.mp3",
+      "duration": 4,
+      "categories": [
+        "escape"
+      ],
+      "gainDb": 7.9,
+      "lufs": -9.6,
+      "truePeak": -1.2,
+      "playbackGainDb": 0.6,
+      "bytes": 32832,
+      "source": "myinstants: \"Why are you running?\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/why-are-you-running-15312/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/why-are.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260605214101id_/https://www.myinstants.com/media/sounds/why-are.mp3",
+      "views": 414818,
+      "sourceDuration": 6.61,
+      "window": [
+        0,
+        4
+      ],
+      "trimmed": true
+    },
+    "emergency_meeting": {
+      "file": "sfx/emergency_meeting.mp3",
+      "duration": 4,
+      "categories": [
+        "ambientFar"
+      ],
+      "gainDb": 16.5,
+      "lufs": -10.6,
+      "truePeak": -1.5,
+      "playbackGainDb": 1.6,
+      "bytes": 32832,
+      "source": "myinstants: \"Among Us Emergency Meeting\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/among-us-emergency-meeting-5844/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/emergency-meeting-sound-among-us.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260720212856id_/https://www.myinstants.com/media/sounds/emergency-meeting-sound-among-us.mp3",
+      "views": 75778,
+      "sourceDuration": 4.249,
+      "window": [
+        0,
+        4
+      ],
+      "trimmed": true
+    },
+    "taco_bell": {
+      "file": "sfx/taco_bell.mp3",
+      "duration": 1.758,
+      "categories": [
+        "ambientFar"
+      ],
+      "gainDb": 11.1,
+      "lufs": -9.7,
+      "truePeak": -1.6,
+      "playbackGainDb": 0.7,
+      "bytes": 14688,
+      "source": "myinstants: \"Taco Bell Bong\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/taco-bell-bong-42481/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/taco-bell-bong-sfx.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260819015522id_/https://www.myinstants.com/media/sounds/taco-bell-bong-sfx.mp3",
+      "views": 1623212,
+      "sourceDuration": 1.908,
+      "window": [
+        0,
+        1.758
+      ],
+      "trimmed": false
+    },
+    "bruh": {
+      "file": "sfx/bruh.mp3",
+      "duration": 0.57,
+      "categories": [
+        "ambientFar",
+        "poster"
+      ],
+      "gainDb": 2,
+      "lufs": -9.5,
+      "truePeak": -1.3,
+      "playbackGainDb": 0.5,
+      "bytes": 5184,
+      "source": "myinstants: \"BRUH\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/bruh/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/movie_1.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260820173949id_/https://www.myinstants.com/media/sounds/movie_1.mp3",
+      "views": 5575023,
+      "sourceDuration": 0.817,
+      "window": [
+        0,
+        0.57
+      ],
+      "trimmed": false
+    },
+    "cave_noise": {
+      "file": "sfx/cave_noise.mp3",
+      "duration": 1.565,
+      "categories": [
+        "ambientFar"
+      ],
+      "gainDb": 28.7,
+      "lufs": -9.5,
+      "truePeak": -1.4,
+      "playbackGainDb": 0.5,
+      "bytes": 13248,
+      "source": "myinstants: \"Minecraft Cave Sound 10\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/minecraft-cave-sound-10-16617/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/minecraft-cave-sound-10.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260517153950id_/https://www.myinstants.com/media/sounds/minecraft-cave-sound-10.mp3",
+      "views": 14073,
+      "sourceDuration": 3.004,
+      "window": [
+        0,
+        1.565
+      ],
+      "trimmed": false
+    },
+    "discord_call": {
+      "file": "sfx/discord_call.mp3",
+      "duration": 5,
+      "categories": [
+        "ambientFar",
+        "phone"
+      ],
+      "gainDb": 15.3,
+      "lufs": -9.6,
+      "truePeak": -1.3,
+      "playbackGainDb": 0.6,
+      "bytes": 40608,
+      "source": "myinstants: \"discord call\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/discord-call-44910/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/discord-call-sound.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260818002939id_/https://www.myinstants.com/media/sounds/discord-call-sound.mp3",
+      "views": 1393191,
+      "sourceDuration": 5.616,
+      "window": [
+        0,
+        5
+      ],
+      "trimmed": true
+    },
+    "smoke_detector": {
+      "file": "sfx/smoke_detector.mp3",
+      "duration": 0.659,
+      "categories": [
+        "ambientFar"
+      ],
+      "gainDb": 11.3,
+      "lufs": -10.7,
+      "truePeak": -1.7,
+      "playbackGainDb": 1.7,
+      "bytes": 6048,
+      "source": "myinstants: \"Smoke Detector Beep\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/smoke-detector-beep-97430/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/smoke-detector-beep.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260822033935id_/https://www.myinstants.com/media/sounds/smoke-detector-beep.mp3",
+      "views": 767986,
+      "sourceDuration": 1.064,
+      "window": [
+        0,
+        0.659
+      ],
+      "trimmed": false
+    },
+    "huh_cat": {
+      "file": "sfx/huh_cat.mp3",
+      "duration": 3,
+      "categories": [
+        "poster"
+      ],
+      "gainDb": 7.4,
+      "lufs": -10.8,
+      "truePeak": -1.5,
+      "playbackGainDb": 1.8,
+      "bytes": 24768,
+      "source": "myinstants: \"Huh Cat\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/huh-cat-21280/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/huh-cat.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260722231300id_/https://www.myinstants.com/media/sounds/huh-cat.mp3",
+      "views": 396862,
+      "sourceDuration": 7.288,
+      "window": [
+        0,
+        3
+      ],
+      "trimmed": true
+    },
+    "dog_doin": {
+      "file": "sfx/dog_doin.mp3",
+      "duration": 1.115,
+      "categories": [
+        "poster"
+      ],
+      "gainDb": 10.6,
+      "lufs": -9.9,
+      "truePeak": -1.3,
+      "playbackGainDb": 0.9,
+      "bytes": 9504,
+      "source": "myinstants: \"what da dog doin\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/what-da-dog-doin-35890/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/yt1s_wU4BGgD.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260816034202id_/https://www.myinstants.com/media/sounds/yt1s_wU4BGgD.mp3",
+      "views": 776592,
+      "sourceDuration": 1.231,
+      "window": [
+        0,
+        1.115
+      ],
+      "trimmed": false
+    },
+    "owen_wow": {
+      "file": "sfx/owen_wow.mp3",
+      "duration": 0.523,
+      "categories": [
+        "poster",
+        "meme:doge",
+        "meme:stanley"
+      ],
+      "gainDb": 16.9,
+      "lufs": -10.1,
+      "truePeak": -1.6,
+      "playbackGainDb": 1.1,
+      "bytes": 4896,
+      "source": "myinstants: \"Owen Wilson Wow\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/owen-wilson-wow-80640/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/6_1Njp68r.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260720215630id_/https://www.myinstants.com/media/sounds/6_1Njp68r.mp3",
+      "views": 109845,
+      "sourceDuration": 0.522,
+      "window": [
+        0,
+        0.523
+      ],
+      "trimmed": false
+    },
+    "sus": {
+      "file": "sfx/sus.mp3",
+      "duration": 3,
+      "categories": [
+        "poster",
+        "meme:sus",
+        "meme:crewmate"
+      ],
+      "gainDb": 7.3,
+      "lufs": -11.2,
+      "truePeak": -1.1,
+      "playbackGainDb": 2.2,
+      "bytes": 24768,
+      "source": "myinstants: \"Amongus Sus\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/amongus-sus-74999/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/53b1bab6-a8c3-4a1a-82db-7110ce1c29ef_6KNDGWD.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260809164050id_/https://www.myinstants.com/media/sounds/53b1bab6-a8c3-4a1a-82db-7110ce1c29ef_6KNDGWD.mp3",
+      "views": 419444,
+      "sourceDuration": 4.645,
+      "window": [
+        0,
+        3
+      ],
+      "trimmed": true
+    },
+    "to_be_continued": {
+      "file": "sfx/to_be_continued.mp3",
+      "duration": 7,
+      "categories": [
+        "tv"
+      ],
+      "gainDb": 18.1,
+      "lufs": -10.3,
+      "truePeak": -1.7,
+      "playbackGainDb": 1.3,
+      "bytes": 56736,
+      "source": "myinstants: \"To be Continued (jojo)\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/to-be-continued-jojo/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/untitled_1071.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260820075955id_/https://www.myinstants.com/media/sounds/untitled_1071.mp3",
+      "views": 1043473,
+      "sourceDuration": 10.92,
+      "window": [
+        0,
+        7
+      ],
+      "trimmed": true
+    },
+    "few_moments_later": {
+      "file": "sfx/few_moments_later.mp3",
+      "duration": 2.162,
+      "categories": [
+        "tv"
+      ],
+      "gainDb": 21.6,
+      "lufs": -11.8,
+      "truePeak": -1.3,
+      "playbackGainDb": 2.8,
+      "bytes": 18144,
+      "source": "myinstants: \"SPONGEBOB A FEW MOMENTS LATER\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/spongebob-a-few-moments-later-/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/a-few-moments-later-hd.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260918224053id_/https://www.myinstants.com/media/sounds/a-few-moments-later-hd.mp3",
+      "views": 326848,
+      "sourceDuration": 2.276,
+      "window": [
+        0,
+        2.162
+      ],
+      "trimmed": false
+    },
+    "curb": {
+      "file": "sfx/curb.mp3",
+      "duration": 6.309,
+      "categories": [
+        "tv"
+      ],
+      "gainDb": 18.1,
+      "lufs": -10.2,
+      "truePeak": -1.1,
+      "playbackGainDb": 1.2,
+      "bytes": 51264,
+      "source": "myinstants: \"Directed by Robert B Weide\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/directed-by-robert-b-weide-451/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/directed-by-robert-b_voI2Z4T.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260827190430id_/https://www.myinstants.com/media/sounds/directed-by-robert-b_voI2Z4T.mp3",
+      "views": 569847,
+      "sourceDuration": 7.012,
+      "window": [
+        0,
+        6.309
+      ],
+      "trimmed": false
+    },
+    "brainrot_ringtone": {
+      "file": "sfx/brainrot_ringtone.mp3",
+      "duration": 5,
+      "categories": [
+        "phone"
+      ],
+      "gainDb": 6.9,
+      "lufs": -9.5,
+      "truePeak": -0.9,
+      "playbackGainDb": 0.5,
+      "bytes": 40608,
+      "source": "myinstants: \"italian brainrot ringtone\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/italian-brainrot-ringtone-99727/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/italian-brainrot-ringtone.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260702172132id_/https://www.myinstants.com/media/sounds/italian-brainrot-ringtone.mp3",
+      "views": 407605,
+      "sourceDuration": 13.401,
+      "window": [
+        0,
+        5
+      ],
+      "trimmed": true
+    },
+    "hello_there": {
+      "file": "sfx/hello_there.mp3",
+      "duration": 0.816,
+      "categories": [
+        "phone"
+      ],
+      "gainDb": 24.6,
+      "lufs": -12.3,
+      "truePeak": -1,
+      "playbackGainDb": 3.3,
+      "bytes": 7200,
+      "source": "myinstants: \"Hello there- obi Wan\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/hello-there-obi-wan-39670/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/obi-wan-hello-there.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260804192144id_/https://www.myinstants.com/media/sounds/obi-wan-hello-there.mp3",
+      "views": 506282,
+      "sourceDuration": 0.816,
+      "window": [
+        0,
+        0.816
+      ],
+      "trimmed": false
+    },
+    "mlg_airhorn": {
+      "file": "sfx/mlg_airhorn.mp3",
+      "duration": 2.935,
+      "categories": [
+        "airhorn"
+      ],
+      "gainDb": 1.4,
+      "lufs": -9.3,
+      "truePeak": -1.3,
+      "playbackGainDb": 0.3,
+      "bytes": 24192,
+      "source": "myinstants: \"MLG AIR HORN!!!!!!!!!!!\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/mlg-air-horn/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/mlg-airhorn.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260830105008id_/https://www.myinstants.com/media/sounds/mlg-airhorn.mp3",
+      "views": 1567332,
+      "sourceDuration": 2.966,
+      "window": [
+        0,
+        2.935
+      ],
+      "trimmed": false
+    },
+    "dj_airhorn": {
+      "file": "sfx/dj_airhorn.mp3",
+      "duration": 2.781,
+      "categories": [
+        "airhorn"
+      ],
+      "gainDb": 1,
+      "lufs": -9.3,
+      "truePeak": -1.1,
+      "playbackGainDb": 0.3,
+      "bytes": 23040,
+      "source": "myinstants: \"DJ Airhorn\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/dj-airhorn/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/dj-airhorn-sound-effect-kingbeatz_1.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260718132107id_/https://www.myinstants.com/media/sounds/dj-airhorn-sound-effect-kingbeatz_1.mp3",
+      "views": 533043,
+      "sourceDuration": 2.979,
+      "window": [
+        0,
+        2.781
+      ],
+      "trimmed": false
+    },
+    "minecraft_drink": {
+      "file": "sfx/minecraft_drink.mp3",
+      "duration": 1.752,
+      "categories": [
+        "drink",
+        "meme:prime",
+        "meme:stanley"
+      ],
+      "gainDb": 24.3,
+      "lufs": -10.4,
+      "truePeak": -1.1,
+      "playbackGainDb": 1.4,
+      "bytes": 14688,
+      "source": "myinstants: \"Minecraft drinking sound\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/minecraft-drinking-sound-35393/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/minecraft-drinking-sound-effect.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260730133919id_/https://www.myinstants.com/media/sounds/minecraft-drinking-sound-effect.mp3",
+      "views": 248410,
+      "sourceDuration": 1.848,
+      "window": [
+        0,
+        1.752
+      ],
+      "trimmed": false
+    },
+    "ka_ching": {
+      "file": "sfx/ka_ching.mp3",
+      "duration": 2.257,
+      "categories": [
+        "vending"
+      ],
+      "gainDb": 19.8,
+      "lufs": -11.1,
+      "truePeak": -1.4,
+      "playbackGainDb": 2.1,
+      "bytes": 18720,
+      "source": "myinstants: \"Ka-Ching!\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/ka-ching/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/ka-ching.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260902092109id_/https://www.myinstants.com/media/sounds/ka-ching.mp3",
+      "views": 199709,
+      "sourceDuration": 2.438,
+      "window": [
+        0,
+        2.257
+      ],
+      "trimmed": false
+    },
+    "bing_chilling": {
+      "file": "sfx/bing_chilling.mp3",
+      "duration": 2.489,
+      "categories": [
+        "vending"
+      ],
+      "gainDb": 9.3,
+      "lufs": -11.6,
+      "truePeak": -1.4,
+      "playbackGainDb": 2.6,
+      "bytes": 20736,
+      "source": "myinstants: \"bing chilling\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/bing-chilling-44511/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/bing-chilling_fcdGgUc.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260628200229id_/https://www.myinstants.com/media/sounds/bing-chilling_fcdGgUc.mp3",
+      "views": 370741,
+      "sourceDuration": 2.504,
+      "window": [
+        0,
+        2.489
+      ],
+      "trimmed": false
+    },
+    "xp_startup": {
+      "file": "sfx/xp_startup.mp3",
+      "duration": 3.735,
+      "categories": [
+        "breaker",
+        "task:router"
+      ],
+      "gainDb": 17.4,
+      "lufs": -10.1,
+      "truePeak": -1.7,
+      "playbackGainDb": 1.1,
+      "bytes": 30528,
+      "source": "myinstants: \"Windows XP - Startup Sound\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/windows-xp-startup-sound-58970/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/windows-xp-startup.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260902120004id_/https://www.myinstants.com/media/sounds/windows-xp-startup.mp3",
+      "views": 269862,
+      "sourceDuration": 4.911,
+      "window": [
+        0,
+        3.735
+      ],
+      "trimmed": false
+    },
+    "inception": {
+      "file": "sfx/inception.mp3",
+      "duration": 2.867,
+      "categories": [
+        "breaker"
+      ],
+      "gainDb": 7,
+      "lufs": -10.1,
+      "truePeak": -2,
+      "playbackGainDb": 1.1,
+      "bytes": 23616,
+      "source": "myinstants: \"Inception Button\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/inception-button/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/inceptionbutton.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260830102040id_/https://www.myinstants.com/media/sounds/inceptionbutton.mp3",
+      "views": 702167,
+      "sourceDuration": 3.03,
+      "window": [
+        0,
+        2.867
+      ],
+      "trimmed": false
+    },
+    "crab_rave": {
+      "file": "sfx/crab_rave.mp3",
+      "duration": 8,
+      "categories": [
+        "radio"
+      ],
+      "gainDb": 5.8,
+      "lufs": -10.9,
+      "truePeak": -1.3,
+      "playbackGainDb": 1.9,
+      "bytes": 64800,
+      "source": "myinstants: \"Crab Rave\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/crab-rave-34272/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/original_zeowGW1.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260409055638id_/https://www.myinstants.com/media/sounds/original_zeowGW1.mp3",
+      "views": 159779,
+      "sourceDuration": 17.371,
+      "window": [
+        0,
+        8
+      ],
+      "trimmed": true
+    },
+    "elevator_music": {
+      "file": "sfx/elevator_music.mp3",
+      "duration": 8,
+      "categories": [
+        "radio"
+      ],
+      "gainDb": 9,
+      "lufs": -9.5,
+      "truePeak": -1.1,
+      "playbackGainDb": 0.5,
+      "bytes": 64800,
+      "source": "myinstants: \"Elevator Music Background\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/elevator-music-background-5865/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/musica-elevador-short.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260719143413id_/https://www.myinstants.com/media/sounds/musica-elevador-short.mp3",
+      "views": 447714,
+      "sourceDuration": 10.678,
+      "window": [
+        0,
+        8
+      ],
+      "trimmed": true
+    },
+    "feud_ding": {
+      "file": "sfx/feud_ding.mp3",
+      "duration": 0.865,
+      "categories": [
+        "taskOk"
+      ],
+      "gainDb": 5.7,
+      "lufs": -9.4,
+      "truePeak": -1.8,
+      "playbackGainDb": 0.4,
+      "bytes": 7776,
+      "source": "myinstants: \"Family Feud YES Ding\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/family-feud-yes-ding-24818/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/family-feud-good-answer.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260720213618id_/https://www.myinstants.com/media/sounds/family-feud-good-answer.mp3",
+      "views": 69242,
+      "sourceDuration": 0.865,
+      "window": [
+        0,
+        0.865
+      ],
+      "trimmed": false
+    },
+    "card_deny": {
+      "file": "sfx/card_deny.mp3",
+      "duration": 0.209,
+      "categories": [
+        "taskFail"
+      ],
+      "gainDb": 7.92,
+      "lufs": -10.96,
+      "truePeak": -1.5,
+      "playbackGainDb": 1.96,
+      "bytes": 2304,
+      "source": "myinstants: \"among us card swipe deny\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/among-us-card-swipe-deny-27349/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/94.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260718180031id_/https://www.myinstants.com/media/sounds/94.mp3",
+      "views": 7847,
+      "sourceDuration": 0.743,
+      "window": [
+        0,
+        0.209
+      ],
+      "trimmed": false
+    },
+    "wrong_buzzer": {
+      "file": "sfx/wrong_buzzer.mp3",
+      "duration": 1.01,
+      "categories": [
+        "taskFail"
+      ],
+      "gainDb": -4.2,
+      "lufs": -9.4,
+      "truePeak": -1.9,
+      "playbackGainDb": 0.4,
+      "bytes": 8928,
+      "source": "myinstants: \"Extremely loud incorrect buzzer\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/extremely-loud-incorrect-buzzer-43033/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/extremely-loud-incorrect-buzzer_0cDaG20.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260729193646id_/https://www.myinstants.com/media/sounds/extremely-loud-incorrect-buzzer_0cDaG20.mp3",
+      "views": 290473,
+      "sourceDuration": 1.08,
+      "window": [
+        0,
+        1.01
+      ],
+      "trimmed": false
+    },
+    "spongebob_fail": {
+      "file": "sfx/spongebob_fail.mp3",
+      "duration": 3,
+      "categories": [
+        "taskFail"
+      ],
+      "gainDb": 6.8,
+      "lufs": -9.5,
+      "truePeak": -1.4,
+      "playbackGainDb": 0.5,
+      "bytes": 24768,
+      "source": "myinstants: \"SpongeBob Fail\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/spongebob-fail-11236/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/spongebob-fail.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260823165108id_/https://www.myinstants.com/media/sounds/spongebob-fail.mp3",
+      "views": 2661215,
+      "sourceDuration": 3.384,
+      "window": [
+        0,
+        3
+      ],
+      "trimmed": true
+    },
+    "mc_click": {
+      "file": "sfx/mc_click.mp3",
+      "duration": 0.077,
+      "categories": [
+        "taskStart"
+      ],
+      "gainDb": 31.15,
+      "lufs": -16.75,
+      "truePeak": -1.9,
+      "playbackGainDb": 7.75,
+      "bytes": 1440,
+      "source": "myinstants: \"Minecraft Click\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/minecraft-click/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/minecraft_click.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260826192517id_/https://www.myinstants.com/media/sounds/minecraft_click.mp3",
+      "views": 364751,
+      "sourceDuration": 0.837,
+      "window": [
+        0,
+        0.077
+      ],
+      "trimmed": false
+    },
+    "switch_click": {
+      "file": "sfx/switch_click.mp3",
+      "duration": 0.333,
+      "categories": [
+        "taskStart"
+      ],
+      "gainDb": 24.47,
+      "lufs": -17.92,
+      "truePeak": -2.5,
+      "playbackGainDb": 8.92,
+      "bytes": 3456,
+      "source": "myinstants: \"Nintendo Switch Click\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/nintendo-switch-click-69023/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/switch-sound.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260831093856id_/https://www.myinstants.com/media/sounds/switch-sound.mp3",
+      "views": 98966,
+      "sourceDuration": 0.828,
+      "window": [
+        0,
+        0.332
+      ],
+      "trimmed": false
+    },
+    "card_accept": {
+      "file": "sfx/card_accept.mp3",
+      "duration": 0.295,
+      "categories": [
+        "task:cardSwipe",
+        "taskOk"
+      ],
+      "gainDb": 13.47,
+      "lufs": -12.19,
+      "truePeak": -1.6,
+      "playbackGainDb": 3.19,
+      "bytes": 3168,
+      "source": "myinstants: \"Among Us Card Accept\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/among-us-card-accept-47667/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/cardpass.mp3",
+      "archiveUrl": "https://web.archive.org/web/20250603014936id_/https://www.myinstants.com/media/sounds/cardpass.mp3",
+      "views": 654,
+      "sourceDuration": 0.801,
+      "window": [
+        0,
+        0.295
+      ],
+      "trimmed": false
+    },
+    "microwave": {
+      "file": "sfx/microwave.mp3",
+      "duration": 5.4,
+      "categories": [
+        "task:microwave"
+      ],
+      "gainDb": -10,
+      "lufs": -9.4,
+      "truePeak": -1.4,
+      "playbackGainDb": 0.4,
+      "bytes": 43776,
+      "source": "myinstants: \"Microwave Be Like\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/microwave-be-like-67793/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/yt1s_8UYlJ7X.mp3",
+      "archiveUrl": "https://web.archive.org/web/20250724041858id_/https://www.myinstants.com/media/sounds/yt1s_8UYlJ7X.mp3",
+      "views": 1653,
+      "sourceDuration": 10.333,
+      "window": [
+        2.2,
+        7.6
+      ],
+      "trimmed": true
+    },
+    "toilet_flush": {
+      "file": "sfx/toilet_flush.mp3",
+      "duration": 5,
+      "categories": [
+        "task:skibidi"
+      ],
+      "gainDb": 9.8,
+      "lufs": -9.7,
+      "truePeak": -1.6,
+      "playbackGainDb": 0.7,
+      "bytes": 40608,
+      "source": "myinstants: \"Toilet Flush\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/toilet-flush-95497/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/toilet_flush.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260730003320id_/https://www.myinstants.com/media/sounds/toilet_flush.mp3",
+      "views": 38006,
+      "sourceDuration": 5.851,
+      "window": [
+        0,
+        5
+      ],
+      "trimmed": true
+    },
+    "skibidi_bop": {
+      "file": "sfx/skibidi_bop.mp3",
+      "duration": 1.713,
+      "categories": [
+        "task:skibidi",
+        "meme:skibidi"
+      ],
+      "gainDb": 12.6,
+      "lufs": -10.3,
+      "truePeak": -2,
+      "playbackGainDb": 1.3,
+      "bytes": 14400,
+      "source": "myinstants: \"skibidi bop mm dada\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/skibidi-bop-mm-dada-20297/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/skibidi-bop-mm-dada_KmPaFlU.mp3",
+      "archiveUrl": "https://web.archive.org/web/20250601062507id_/https://www.myinstants.com/media/sounds/skibidi-bop-mm-dada_KmPaFlU.mp3",
+      "views": 39903,
+      "sourceDuration": 1.858,
+      "window": [
+        0,
+        1.713
+      ],
+      "trimmed": false
+    },
+    "it_crowd": {
+      "file": "sfx/it_crowd.mp3",
+      "duration": 1.607,
+      "categories": [
+        "task:router"
+      ],
+      "gainDb": 14.4,
+      "lufs": -11.8,
+      "truePeak": -1.6,
+      "playbackGainDb": 2.8,
+      "bytes": 13536,
+      "source": "myinstants: \"Have you tried turning it off and on again?\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/have-you-tried-turning-it-off-and-on-again-88847/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/haveyoutried1.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260107114834id_/https://www.myinstants.com/media/sounds/haveyoutried1.mp3",
+      "views": 2226,
+      "sourceDuration": 1.607,
+      "window": [
+        0,
+        1.607
+      ],
+      "trimmed": false
+    },
+    "printer": {
+      "file": "sfx/printer.mp3",
+      "duration": 6,
+      "categories": [
+        "task:copier"
+      ],
+      "gainDb": 21.2,
+      "lufs": -11.8,
+      "truePeak": -1,
+      "playbackGainDb": 2.8,
+      "bytes": 48672,
+      "source": "myinstants: \"Printer Sound\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/printer-sound-37760/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/computer-printer-sound-effect-hd-mp3cut_9HoNHNU.mp3",
+      "archiveUrl": "https://web.archive.org/web/20251027135329id_/https://www.myinstants.com/media/sounds/computer-printer-sound-effect-hd-mp3cut_9HoNHNU.mp3",
+      "views": 1966,
+      "sourceDuration": 9.037,
+      "window": [
+        0,
+        6
+      ],
+      "trimmed": true
+    },
+    "squidward_walk": {
+      "file": "sfx/squidward_walk.mp3",
+      "duration": 3.189,
+      "categories": [
+        "task:mop"
+      ],
+      "gainDb": 34.3,
+      "lufs": -14.6,
+      "truePeak": -1,
+      "playbackGainDb": 5.6,
+      "bytes": 26208,
+      "source": "myinstants: \"squidward walking sound\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/squidward-walking-sound-11310/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/squidward-walking-sound.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260721153832id_/https://www.myinstants.com/media/sounds/squidward-walking-sound.mp3",
+      "views": 206468,
+      "sourceDuration": 3.504,
+      "window": [
+        0,
+        3.189
+      ],
+      "trimmed": false
+    },
+    "mc_block": {
+      "file": "sfx/mc_block.mp3",
+      "duration": 0.282,
+      "categories": [
+        "task:touchGrass",
+        "meme:grassBlock"
+      ],
+      "gainDb": 11.32,
+      "lufs": -12.49,
+      "truePeak": -1.6,
+      "playbackGainDb": 3.49,
+      "bytes": 2880,
+      "source": "myinstants: \"Minecraft block\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/minecraft-block-46061/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/minecraft-block.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260412224653id_/https://www.myinstants.com/media/sounds/minecraft-block.mp3",
+      "views": 3324,
+      "sourceDuration": 0.849,
+      "window": [
+        0,
+        0.282
+      ],
+      "trimmed": false
+    },
+    "grimace_shake": {
+      "file": "sfx/grimace_shake.mp3",
+      "duration": 5,
+      "categories": [
+        "meme:grimace"
+      ],
+      "gainDb": 12.3,
+      "lufs": -10.5,
+      "truePeak": -1.2,
+      "playbackGainDb": 1.5,
+      "bytes": 40608,
+      "source": "myinstants: \"Grimace Shake\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/grimace-shake-74353/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/grimace-shake.mp3",
+      "archiveUrl": "https://web.archive.org/web/20250926124001id_/https://www.myinstants.com/media/sounds/grimace-shake.mp3",
+      "views": 248,
+      "sourceDuration": 50.532,
+      "window": [
+        25.4,
+        30.4
+      ],
+      "trimmed": true
+    },
+    "among_us_drip": {
+      "file": "sfx/among_us_drip.mp3",
+      "duration": 3.754,
+      "categories": [
+        "meme:crewmate"
+      ],
+      "gainDb": 19.1,
+      "lufs": -10.5,
+      "truePeak": -1.4,
+      "playbackGainDb": 1.5,
+      "bytes": 30816,
+      "source": "myinstants: \"Among us\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/among-us-35001/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/among.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260718180031id_/https://www.myinstants.com/media/sounds/among.mp3",
+      "views": 742372,
+      "sourceDuration": 3.831,
+      "window": [
+        0,
+        3.754
+      ],
+      "trimmed": false
+    },
+    "only_in_ohio": {
+      "file": "sfx/only_in_ohio.mp3",
+      "duration": 4,
+      "categories": [
+        "meme:ohio"
+      ],
+      "gainDb": 12.3,
+      "lufs": -10.5,
+      "truePeak": -0.5,
+      "playbackGainDb": 1.5,
+      "bytes": 32832,
+      "source": "myinstants: \"Only in ohio\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/only-in-ohio-68247/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/only-in-ohio.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260107115018id_/https://www.myinstants.com/media/sounds/only-in-ohio.mp3",
+      "views": 2267,
+      "sourceDuration": 4.244,
+      "window": [
+        0,
+        4
+      ],
+      "trimmed": true
+    },
+    "ohio_ahh": {
+      "file": "sfx/ohio_ahh.mp3",
+      "duration": 4,
+      "categories": [
+        "meme:ohio"
+      ],
+      "gainDb": 11.5,
+      "lufs": -10.6,
+      "truePeak": -1.6,
+      "playbackGainDb": 1.6,
+      "bytes": 32832,
+      "source": "myinstants: \"Ohio ahh sound effect\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/ohio-ahh-sound-effect-42027/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/ohio-ahh-sound-effect.mp3",
+      "archiveUrl": "https://web.archive.org/web/20250725055552id_/https://www.myinstants.com/media/sounds/ohio-ahh-sound-effect.mp3",
+      "views": 52358,
+      "sourceDuration": 15.186,
+      "window": [
+        0,
+        4
+      ],
+      "trimmed": true
+    },
+    "chill_guy": {
+      "file": "sfx/chill_guy.mp3",
+      "duration": 6,
+      "categories": [
+        "meme:chillGuy"
+      ],
+      "gainDb": 22.8,
+      "lufs": -9.5,
+      "truePeak": -1.4,
+      "playbackGainDb": 0.5,
+      "bytes": 48672,
+      "source": "myinstants: \"CHILL GUY\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/chill-guy-14363/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/chill-guy.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260107115222id_/https://www.myinstants.com/media/sounds/chill-guy.mp3",
+      "views": 161092,
+      "sourceDuration": 8.803,
+      "window": [
+        0,
+        6
+      ],
+      "trimmed": true
+    },
+    "swamp": {
+      "file": "sfx/swamp.mp3",
+      "duration": 2.841,
+      "categories": [
+        "meme:shrek"
+      ],
+      "gainDb": 12.5,
+      "lufs": -10.6,
+      "truePeak": -1.8,
+      "playbackGainDb": 1.6,
+      "bytes": 23328,
+      "source": "myinstants: \"WHAT ARE YOU DOING IN MY SWAMP\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/what-are-you-doing-in-my-swamp/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/what-are-you-doing-in-my-swamp-.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260718133538id_/https://www.myinstants.com/media/sounds/what-are-you-doing-in-my-swamp-.mp3",
+      "views": 393818,
+      "sourceDuration": 3.423,
+      "window": [
+        0,
+        2.841
+      ],
+      "trimmed": false
+    },
+    "big_chungus": {
+      "file": "sfx/big_chungus.mp3",
+      "duration": 6,
+      "categories": [
+        "meme:chungus"
+      ],
+      "gainDb": 11.7,
+      "lufs": -11.9,
+      "truePeak": -1.3,
+      "playbackGainDb": 2.9,
+      "bytes": 48672,
+      "source": "myinstants: \"Big Chungus\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/big-chungus-81422/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/big-chungus-official-main-theme-song-by-endigo-audiotrimmer.mp3",
+      "archiveUrl": "https://web.archive.org/web/20240117052920id_/https://www.myinstants.com/media/sounds/big-chungus-official-main-theme-song-by-endigo-audiotrimmer.mp3",
+      "views": 5652,
+      "sourceDuration": 11.665,
+      "window": [
+        0,
+        6
+      ],
+      "trimmed": true
+    },
+    "trololo": {
+      "file": "sfx/trololo.mp3",
+      "duration": 6,
+      "categories": [
+        "meme:trollface"
+      ],
+      "gainDb": 6.2,
+      "lufs": -11,
+      "truePeak": -2.6,
+      "playbackGainDb": 2,
+      "bytes": 48672,
+      "source": "myinstants: \"Trololo\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/trololo/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/trollolol.swf.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260322213428id_/https://www.myinstants.com/media/sounds/trollolol.swf.mp3",
+      "views": 421577,
+      "sourceDuration": 9.896,
+      "window": [
+        0,
+        6
+      ],
+      "trimmed": true
+    },
+    "homer_nerd": {
+      "file": "sfx/homer_nerd.mp3",
+      "duration": 3,
+      "categories": [
+        "meme:nerd"
+      ],
+      "gainDb": 20.8,
+      "lufs": -9.5,
+      "truePeak": -1.4,
+      "playbackGainDb": 0.5,
+      "bytes": 24768,
+      "source": "myinstants: \"NERD!!\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/nerd/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/homer-simpson-nerd.mp3",
+      "archiveUrl": "https://web.archive.org/web/20250516130153id_/https://www.myinstants.com/media/sounds/homer-simpson-nerd.mp3",
+      "views": 9930,
+      "sourceDuration": 3.554,
+      "window": [
+        0,
+        3
+      ],
+      "trimmed": true
+    },
+    "fanum_brainrot": {
+      "file": "sfx/fanum_brainrot.mp3",
+      "duration": 5,
+      "categories": [
+        "meme:fanumTax"
+      ],
+      "gainDb": 5,
+      "lufs": -10.8,
+      "truePeak": -1,
+      "playbackGainDb": 1.8,
+      "bytes": 40608,
+      "source": "myinstants: \"FANUM EXPLOSION\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/fanum-explosion-395/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/fanum-explosion.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260216180009id_/https://www.myinstants.com/media/sounds/fanum-explosion.mp3",
+      "views": 574,
+      "sourceDuration": 7.651,
+      "window": [
+        0,
+        5
+      ],
+      "trimmed": true
+    },
+    "no_more_skibidi": {
+      "file": "sfx/no_more_skibidi.mp3",
+      "duration": 4,
+      "categories": [
+        "meme:skibidi"
+      ],
+      "gainDb": 8.4,
+      "lufs": -9.9,
+      "truePeak": -1.4,
+      "playbackGainDb": 0.9,
+      "bytes": 32832,
+      "source": "myinstants: \"my mommy said no more skibidi toilet\"",
+      "sourceUrl": "https://www.myinstants.com/en/instant/my-mommy-said-no-more-skibidi-toilet-45304/",
+      "mediaUrl": "https://www.myinstants.com/media/sounds/my-mommy-said-no-more-skibidi-toilet.mp3",
+      "archiveUrl": "https://web.archive.org/web/20260816034147id_/https://www.myinstants.com/media/sounds/my-mommy-said-no-more-skibidi-toilet.mp3",
+      "views": 345758,
+      "sourceDuration": 46.916,
+      "window": [
+        0,
+        4
+      ],
+      "trimmed": true
+    }
+  },
+  "memeCategories": {
+    "reveal": [
+      "vine_boom",
+      "among_us_reveal",
+      "mgs_alert",
+      "dun_dun_dun"
+    ],
+    "hit": [
+      "roblox_oof",
+      "metal_pipe",
+      "emotional_damage",
+      "minecraft_hurt",
+      "bonk"
+    ],
+    "death": [
+      "gta_wasted",
+      "mission_failed",
+      "coffin_dance",
+      "xp_shutdown"
+    ],
+    "collect": [
+      "sheesh",
+      "anime_wow",
+      "yippee",
+      "zelda_item"
+    ],
+    "win": [
+      "mission_passed",
+      "victory_royale",
+      "ff_fanfare"
+    ],
+    "ambientFar": [
+      "emergency_meeting",
+      "taco_bell",
+      "bruh",
+      "cave_noise",
+      "discord_call",
+      "smoke_detector"
+    ],
+    "poster": [
+      "vine_boom",
+      "bruh",
+      "huh_cat",
+      "dog_doin",
+      "owen_wow",
+      "sus"
+    ],
+    "tv": [
+      "to_be_continued",
+      "few_moments_later",
+      "curb"
+    ],
+    "phone": [
+      "discord_call",
+      "brainrot_ringtone",
+      "hello_there"
+    ],
+    "airhorn": [
+      "mlg_airhorn",
+      "dj_airhorn"
+    ],
+    "drink": [
+      "minecraft_drink"
+    ],
+    "vending": [
+      "ka_ching",
+      "bing_chilling"
+    ],
+    "breaker": [
+      "xp_startup",
+      "inception"
+    ],
+    "escape": [
+      "rizz",
+      "erm_sigma",
+      "why_running"
+    ],
+    "radio": [
+      "crab_rave",
+      "elevator_music"
+    ],
+    "taskStart": [
+      "mc_click",
+      "switch_click"
+    ],
+    "taskOk": [
+      "feud_ding",
+      "card_accept"
+    ],
+    "taskFail": [
+      "card_deny",
+      "wrong_buzzer",
+      "spongebob_fail"
+    ],
+    "task:cardSwipe": [
+      "card_accept"
+    ],
+    "task:microwave": [
+      "microwave"
+    ],
+    "task:skibidi": [
+      "toilet_flush",
+      "skibidi_bop"
+    ],
+    "task:router": [
+      "xp_startup",
+      "it_crowd"
+    ],
+    "task:copier": [
+      "printer"
+    ],
+    "task:mop": [
+      "squidward_walk"
+    ],
+    "task:touchGrass": [
+      "mc_block"
+    ],
+    "task:vendingStuck": [
+      "metal_pipe",
+      "bonk"
+    ],
+    "meme:prime": [
+      "erm_sigma",
+      "minecraft_drink"
+    ],
+    "meme:grimace": [
+      "grimace_shake"
+    ],
+    "meme:crewmate": [
+      "sus",
+      "among_us_drip"
+    ],
+    "meme:grassBlock": [
+      "mc_block"
+    ],
+    "meme:ohio": [
+      "only_in_ohio",
+      "ohio_ahh"
+    ],
+    "meme:chillGuy": [
+      "chill_guy"
+    ],
+    "meme:shrek": [
+      "swamp"
+    ],
+    "meme:chungus": [
+      "big_chungus"
+    ],
+    "meme:doge": [
+      "bonk",
+      "owen_wow"
+    ],
+    "meme:sus": [
+      "among_us_reveal",
+      "sus"
+    ],
+    "meme:trollface": [
+      "trololo"
+    ],
+    "meme:stanley": [
+      "owen_wow",
+      "minecraft_drink"
+    ],
+    "meme:nerd": [
+      "homer_nerd"
+    ],
+    "meme:fanumTax": [
+      "fanum_brainrot"
+    ],
+    "meme:skibidi": [
+      "skibidi_bop",
+      "no_more_skibidi"
+    ],
+    "party": [
+      "erm_sigma",
+      "mlg_airhorn",
+      "dj_airhorn"
+    ]
+  },
+  "sfxMeta": {
+    "targetLufs": -9,
+    "maxTruePeak": -1,
+    "rate": 32000,
+    "bitrate": "64k",
+    "processing": "mono, silence trim -48/-50 dB, window + fades, highpass 40 Hz, +3 dB bass shelf @ 100 Hz, static gain to target, lookahead limiter, libmp3lame CBR; playbackGainDb makes up any shortfall in the float graph"
+  },
+  "posters": {
+    "image": "img/posters.webp",
+    "cols": 4,
+    "rows": 6,
+    "cellW": 256,
+    "cellH": 356,
+    "aspect": 0.7191,
+    "count": 24,
+    "bytes": 301760,
+    "cells": [
+      {
+        "caption": "such hallway very moist. wow.",
+        "source": "imgflip template \"Doge Meme Template\" https://imgflip.com/s/meme/Doge.jpg (page https://imgflip.com/memetemplate/Doge); caption added",
+        "kind": "meme"
+      },
+      {
+        "caption": "almond water futures: stonks",
+        "source": "imgflip template \"Stonks Template\" https://i.imgflip.com/33g0hy.jpg (page https://imgflip.com/memetemplate/187184518/Stonks); caption added",
+        "kind": "meme"
+      },
+      {
+        "caption": "this is fine",
+        "source": "imgflip template \"This Is Fine Meme Template\" https://imgflip.com/s/meme/This-Is-Fine.jpg (page https://imgflip.com/memetemplate/This-Is-Fine); caption added",
+        "kind": "meme"
+      },
+      {
+        "caption": "0 days since last noclip",
+        "source": "imgflip template \"Hide the Pain Harold Meme Template\" https://imgflip.com/s/meme/Hide-the-Pain-Harold.jpg (page https://imgflip.com/memetemplate/Hide-the-Pain-Harold); caption added",
+        "kind": "meme"
+      },
+      {
+        "caption": "average level 0 enjoyer",
+        "source": "imgflip template \"Giga Chad Template\" https://i.imgflip.com/35bdwf.jpg (page https://imgflip.com/memetemplate/190327839/Giga-Chad); caption added",
+        "kind": "meme"
+      },
+      {
+        "caption": "problem, wanderer?",
+        "source": "imgflip template \"Troll Face Meme Template\" https://imgflip.com/s/meme/Troll-Face.jpg (page https://imgflip.com/memetemplate/Troll-Face); caption added",
+        "kind": "meme"
+      },
+      {
+        "caption": "the hallway had another hallway",
+        "source": "imgflip template \"Surprised Pikachu Meme Template\" https://imgflip.com/s/meme/Surprised-Pikachu.jpg (page https://imgflip.com/memetemplate/Surprised-Pikachu); caption added",
+        "kind": "meme"
+      },
+      {
+        "caption": "when the cutout is sus",
+        "source": "imgflip template \"Among Us Template\" https://i.imgflip.com/4cvs8e.png (page https://imgflip.com/memetemplate/263503022/Among-Us); caption added",
+        "kind": "meme"
+      },
+      {
+        "caption": "Leaving the Backrooms? Nah. One more hallway? Yeah.",
+        "source": "imgflip template \"Drake Hotline Bling Meme Template\" https://imgflip.com/s/meme/Drake-Hotline-Bling.jpg; captions added",
+        "kind": "meme"
+      },
+      {
+        "caption": "Employee of the Month: nobody (again). Month: ongoing.",
+        "source": "generated: gpt-image via mchat, see gen/README.md (gen/posters/employee_month.webp), villain cutout composited",
+        "kind": "generated"
+      },
+      {
+        "caption": "Have you seen this man? Answers to: Kevin.",
+        "source": "generated: gpt-image via mchat, see gen/README.md (gen/posters/have_you_seen.webp), villain cutout composited",
+        "kind": "generated"
+      },
+      {
+        "caption": "Stay hydrated. It is probably fine.",
+        "source": "generated: gpt-image via mchat, see gen/README.md (gen/posters/almond_water.webp)",
+        "kind": "generated"
+      },
+      {
+        "caption": "M.E.G. safety notice: do not make eye contact with the PNG.",
+        "source": "generated: gpt-image via mchat, see gen/README.md (gen/posters/meg_notice.webp)",
+        "kind": "generated"
+      },
+      {
+        "caption": "Caution: moist carpet. Do not ask why.",
+        "source": "generated: gpt-image via mchat, see gen/README.md (gen/posters/moist_carpet.webp)",
+        "kind": "generated"
+      },
+      {
+        "caption": "Level 0 is not a vibe.",
+        "source": "generated: gpt-image via mchat, see gen/README.md (gen/posters/not_a_vibe.webp)",
+        "kind": "generated"
+      },
+      {
+        "caption": "WANTED for loitering in Level 0. Reward: 3 almond water.",
+        "source": "original: composed from the villain cutouts (public/assets/img) with Impact / Arial Black",
+        "kind": "original"
+      },
+      {
+        "caption": "waiting for the exit to get power",
+        "source": "imgflip template \"Sad Pablo Escobar Meme Template\" https://imgflip.com/s/meme/Sad-Pablo-Escobar.jpg (page https://imgflip.com/memetemplate/Sad-Pablo-Escobar); caption added",
+        "kind": "meme"
+      },
+      {
+        "caption": "is this the exit?",
+        "source": "imgflip template \"Is This A Pigeon Meme Template\" https://imgflip.com/s/meme/Is-This-A-Pigeon.jpg (page https://imgflip.com/memetemplate/Is-This-A-Pigeon); caption added",
+        "kind": "meme"
+      },
+      {
+        "caption": "i am once again asking you to do your tasks",
+        "source": "imgflip template \"Bernie I Am Once Again Asking For Your Support Meme Template\" https://imgflip.com/s/meme/Bernie-I-Am-Once-Again-Asking-For-Your-Support.jpg (page https://imgflip.com/memetemplate/Bernie-I-Am-Once-Again-Asking-For-Your-Support); caption added",
+        "kind": "meme"
+      },
+      {
+        "caption": "Touch grass. Mandatory. Level 0 has none, so do it here.",
+        "source": "generated: gpt-image via mchat, see ui-gen/README.md (ui-gen/posters/touch_grass.webp)",
+        "kind": "generated"
+      },
+      {
+        "caption": "M.E.G. work order: do your tasks. No, you cannot vote anyone out.",
+        "source": "generated: gpt-image via mchat, see ui-gen/README.md (ui-gen/posters/work_order.webp)",
+        "kind": "generated"
+      },
+      {
+        "caption": "IT helpdesk: have you tried turning it off and on again?",
+        "source": "generated: gpt-image via mchat, see ui-gen/README.md (ui-gen/posters/off_on.webp)",
+        "kind": "generated"
+      },
+      {
+        "caption": "Microwave rules: no fish, no screaming. mmmmmm BEEP.",
+        "source": "generated: gpt-image via mchat, see ui-gen/README.md (ui-gen/posters/microwave.webp)",
+        "kind": "generated"
+      },
+      {
+        "caption": "Wet floor: skill issue.",
+        "source": "generated: gpt-image via mchat, see ui-gen/README.md (ui-gen/posters/skill_issue.webp)",
+        "kind": "generated"
+      }
+    ]
+  },
+  "tv": {
+    "image": "img/tv.webp",
+    "cols": 4,
+    "rows": 3,
+    "cellW": 256,
+    "cellH": 192,
+    "aspect": 1.3333,
+    "count": 12,
+    "bytes": 74234,
+    "cells": [
+      {
+        "caption": "PLEASE STAND BY. M.E.G. emergency broadcast.",
+        "source": "original: SMPTE-style test card drawn in the script",
+        "kind": "original"
+      },
+      {
+        "caption": "Distracted boyfriend: you, the exit sign, almond water.",
+        "source": "imgflip template \"Distracted Boyfriend Meme Template\" https://imgflip.com/s/meme/Distracted-Boyfriend.jpg",
+        "kind": "meme"
+      },
+      {
+        "caption": "This is fine.",
+        "source": "imgflip template \"This Is Fine Meme Template\" https://imgflip.com/s/meme/This-Is-Fine.jpg",
+        "kind": "meme"
+      },
+      {
+        "caption": "Can't get caught if you never stop running.",
+        "source": "imgflip template \"Roll Safe Think About It Meme Template\" https://imgflip.com/s/meme/Roll-Safe-Think-About-It.jpg",
+        "kind": "meme"
+      },
+      {
+        "caption": "Woman yelling at cat (reruns).",
+        "source": "imgflip template \"Woman Yelling At Cat Meme Template\" https://imgflip.com/s/meme/Woman-Yelling-At-Cat.jpg",
+        "kind": "meme"
+      },
+      {
+        "caption": "There is 1 impostor among us.",
+        "source": "imgflip template \"There is 1 imposter among us Template\" https://i.imgflip.com/4doeb3.png",
+        "kind": "meme"
+      },
+      {
+        "caption": "*looks away from the cutout*",
+        "source": "imgflip template \"Monkey Puppet Meme Template\" https://imgflip.com/s/meme/Monkey-Puppet.jpg",
+        "kind": "meme"
+      },
+      {
+        "caption": "Somebody touched the breaker.",
+        "source": "imgflip template \"Disaster Girl Meme Template\" https://imgflip.com/s/meme/Disaster-Girl.jpg",
+        "kind": "meme"
+      },
+      {
+        "caption": "To be continued...",
+        "source": "original: sepia freeze of gen/posters/not_a_vibe.webp (generated: gpt-image via mchat) with a drawn arrow",
+        "kind": "original"
+      },
+      {
+        "caption": "Left exit 12: the EXIT. Also left: one more hallway.",
+        "source": "imgflip template \"Left Exit 12 Off Ramp Meme Template\" https://imgflip.com/s/meme/Left-Exit-12-Off-Ramp.jpg",
+        "kind": "meme"
+      },
+      {
+        "caption": "Do not do your tasks. (Do your tasks.)",
+        "source": "imgflip template \"Evil Kermit Meme Template\" https://imgflip.com/s/meme/Evil-Kermit.jpg",
+        "kind": "meme"
+      },
+      {
+        "caption": "Run, or hide. Sweating intensifies.",
+        "source": "imgflip template \"Two Buttons Meme Template\" https://imgflip.com/s/meme/Two-Buttons.jpg",
+        "kind": "meme"
+      }
+    ]
+  },
+  "memeTextures": {
+    "sign_ohio": {
+      "image": "ui-gen/props/sign_ohio.webp",
+      "w": 768,
+      "h": 507,
+      "alpha": true,
+      "aspect": 1.5148
+    },
+    "note_fanum_tax": {
+      "image": "ui-gen/props/note_fanum_tax.webp",
+      "w": 512,
+      "h": 512,
+      "alpha": true,
+      "aspect": 1
+    },
+    "label_hydrate": {
+      "image": "ui-gen/props/label_hydrate.webp",
+      "w": 1024,
+      "h": 439,
+      "alpha": true,
+      "aspect": 2.3326
+    },
+    "sign_nerd": {
+      "image": "ui-gen/props/sign_nerd.webp",
+      "w": 512,
+      "h": 512,
+      "alpha": false,
+      "aspect": 1
+    },
+    "decal_sus": {
+      "image": "ui-gen/props/decal_sus.webp",
+      "w": 768,
+      "h": 398,
+      "alpha": true,
+      "aspect": 1.9296
+    }
+  },
+  "party": {
+    "audio": "audio/sigma.mp3",
+    "source": "archive.org \"Sigma Boy\" (betsy); file tags \"Sigma Boy - Сигма Бой\" / Betsy/Мария Янковская, 2024. Chorus verified against myinstants \"sigma boy\"",
+    "sourceUrl": "https://archive.org/details/sigma-boy",
+    "sourceFileUrl": "https://archive.org/download/sigma-boy/Sigma%20Boy.mp3",
+    "reference": {
+      "title": "sigma boy",
+      "views": 209364,
+      "sourceUrl": "https://www.myinstants.com/en/instant/sigma-boy-32341/",
+      "archiveUrl": "https://web.archive.org/web/20260107114905id_/https://www.myinstants.com/media/sounds/sigma-boy.mp3",
+      "foundAt": 17.7424,
+      "waveCorr": 0.9974
+    },
+    "duration": 35.04,
+    "bpm": 125,
+    "firstBeat": 0.02,
+    "dropAt": 0.98,
+    "loopStart": 0.98,
+    "loopEnd": 31.7,
+    "gainDb": -1.6,
+    "limiterCeilingDb": -3.1,
+    "playbackGainDb": 1,
+    "lufs": -10,
+    "truePeak": -1.3,
+    "lra": 1.5,
+    "onsetAt": 0.0035,
+    "onsetThreshold": 0.05,
+    "edit": {
+      "sourceWindows": [
+        [
+          16.808,
+          33.088
+        ],
+        [
+          113.728,
+          132.488
+        ]
+      ],
+      "spliceAt": 16.28,
+      "spliceCorr": 0.8238,
+      "bars": "2 beats pickup + chorus 1 bars 1-8 + final chorus bars 9-16 + outro"
+    },
+    "beatFit": {
+      "beats": 73,
+      "onGrid": 0.481,
+      "offGrid": 0.395,
+      "peaked": 65,
+      "medianErrMs": -6.67,
+      "p90AbsErrMs": 14.13
+    },
+    "limiter": {
+      "windowsOver0_5dB": 73.887,
+      "windowsOver1dB": 67.237,
+      "maxGrDb": 5.3
+    },
+    "decodeAlign": {
+      "offsetSamples": 0,
+      "offsetMs": 0,
+      "corr": 0.9921,
+      "refSamples": 1681920,
+      "testSamples": 1681920,
+      "sr": 48000
+    },
+    "rate": 48000,
+    "channels": 2,
+    "bitrate": "96k",
+    "bytes": 421056,
+    "processing": "stereo 48 kHz float edit (equal-power 12 ms splice, 4 ms fade in, 0.6 s fade out, -50 dB tail trim); highpass=f=28,bass=g=3:f=60:w=0.7,treble=g=1.5:f=9000,lowpass=f=16000:p=2; static gain toward -9 LUFS (max +1.5 dB extra drive), 4x oversampled lookahead limiter; libmp3lame 96k CBR joint stereo 48000 Hz"
+  }
+}

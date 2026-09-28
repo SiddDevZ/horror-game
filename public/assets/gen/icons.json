@@ -1,0 +1,105 @@
+{
+  "image": "icons.png",
+  "cell": 32,
+  "cols": 4,
+  "rows": 3,
+  "pixelated": true,
+  "icons": {
+    "almond_water": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32,
+      "col": 0,
+      "row": 0
+    },
+    "airhorn": {
+      "x": 32,
+      "y": 0,
+      "w": 32,
+      "h": 32,
+      "col": 1,
+      "row": 0
+    },
+    "vhs_tape": {
+      "x": 64,
+      "y": 0,
+      "w": 32,
+      "h": 32,
+      "col": 2,
+      "row": 0
+    },
+    "breaker": {
+      "x": 96,
+      "y": 0,
+      "w": 32,
+      "h": 32,
+      "col": 3,
+      "row": 0
+    },
+    "exit_door": {
+      "x": 0,
+      "y": 32,
+      "w": 32,
+      "h": 32,
+      "col": 0,
+      "row": 1
+    },
+    "phone": {
+      "x": 32,
+      "y": 32,
+      "w": 32,
+      "h": 32,
+      "col": 1,
+      "row": 1
+    },
+    "compass_arrow": {
+      "x": 64,
+      "y": 32,
+      "w": 32,
+      "h": 32,
+      "col": 2,
+      "row": 1
+    },
+    "skull": {
+      "x": 96,
+      "y": 32,
+      "w": 32,
+      "h": 32,
+      "col": 3,
+      "row": 1
+    },
+    "trophy": {
+      "x": 0,
+      "y": 64,
+      "w": 32,
+      "h": 32,
+      "col": 0,
+      "row": 2
+    },
+    "note": {
+      "x": 32,
+      "y": 64,
+      "w": 32,
+      "h": 32,
+      "col": 1,
+      "row": 2
+    },
+    "checkbox_unchecked": {
+      "x": 64,
+      "y": 64,
+      "w": 32,
+      "h": 32,
+      "col": 2,
+      "row": 2
+    },
+    "checkbox_checked": {
+      "x": 96,
+      "y": 64,
+      "w": 32,
+      "h": 32,
+      "col": 3,
+      "row": 2
+    }
+  }
+}

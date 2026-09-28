@@ -1,0 +1,20 @@
+{
+  "name": "noclipped",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5230 --strictPort",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 5231 --strictPort",
+    "assets": "node scripts/process-assets.mjs",
+    "test:unit": "node test/unit/run.mjs"
+  },
+  "dependencies": {
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "vite": "8.3.1"
+  },
+  "description": "NOCLIPPED: an infinite Backrooms meme-horror game in three.js"
+}
